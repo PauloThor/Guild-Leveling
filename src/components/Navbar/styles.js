@@ -61,6 +61,7 @@ export const BurgerMenu = styled.div`
   right: 20px;
   z-index: 1;
   display: none;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     display: flex;
