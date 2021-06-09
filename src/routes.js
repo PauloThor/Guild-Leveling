@@ -10,7 +10,7 @@ const Routes = () => {
         <Navbar />
         <Signup />
       </Route>
-      <Route>
+      <Route path="/login">
         <Navbar />
         <Login />
       </Route>
