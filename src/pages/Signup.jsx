@@ -1,5 +1,11 @@
+import FormSign from "../components/FormSign";
+
 const Signup = () => {
-  return <div></div>;
+  return (
+    <div>
+      <FormSign />
+    </div>
+  );
 };
 
 export default Signup;
