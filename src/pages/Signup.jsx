@@ -1,6 +1,11 @@
-import FormSing from "../components/FormSign";
+import FormSign from "../components/FormSign";
+
 const Signup = () => {
-  return <FormSing />;
+  return (
+    <div>
+      <FormSign />
+    </div>
+  );
 };
 
 export default Signup;
