@@ -1,8 +1,14 @@
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import Burger from "./components/Navbar/Burger";
+import Navbar from "./components/Navbar/Navbar";
 
 const Routes = () => {
-  return;
-  <Switch>Teste</Switch>;
+  return (
+    <Switch>
+      <Navbar />
+      <Route exact path="/"></Route>
+    </Switch>
+  );
 };
 
 export default Routes;
