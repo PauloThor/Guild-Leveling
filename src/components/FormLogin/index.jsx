@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
@@ -91,10 +90,6 @@ const FormLogin = () => {
       </form>
     </Container>
   );
-=======
-const FormLogin = () => {
-  return <div></div>;
->>>>>>> fe5b738e19e89249f3ab73d2b7c11e339bc28a26
 };
 
 export default FormLogin;
