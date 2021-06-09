@@ -1,19 +1,19 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Button, TextField } from "@material-ui/core";
+import { Button, InputAdornment, TextField } from "@material-ui/core";
+import { FiLock, FiUser } from "react-icons/fi";
+import { Container } from "./styles";
 import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import api from "../../services";
 
-//import {Container} from './styles'
-
 const FormLogin = () => {
   const schema = yup.object().shape({
-    username: yup.string().required("Campo obrigatório"),
+    username: yup.string().required("Required field"),
     password: yup
       .string()
-      .min(6, "Minímo de 6 caracteres")
-      .required("Campo obrigatório"),
+      .min(6, "Minimum 6 characters")
+      .required("Required field"),
   });
 
   const {
@@ -24,7 +24,7 @@ const FormLogin = () => {
 
   const history = useHistory();
 
-  //Da um post na api com os dados inseridos, e coloca o token da resposta no localStorage
+  //Da um post na API com os dados inseridos, e coloca o token da resposta no localStorage
   const onSubmit = (data) => {
     console.log(data);
     api
@@ -40,38 +40,55 @@ const FormLogin = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>Login Guild Leveling</h2>
+    <Container>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h2>Login Guild Leveling</h2>
 
-      <TextField
-        fullWidth
-        helperText={errors.username?.message}
-        {...register("username")}
-        label="Username"
-        name="username"
-      />
+        <TextField
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment>
+                <FiUser />
+              </InputAdornment>
+            ),
+          }}
+          helperText={errors.username?.message}
+          {...register("username")}
+          label="Username"
+          name="username"
+        />
 
-      <TextField
-        fullWidth
-        helperText={errors.password?.message}
-        {...register("password")}
-        name="password"
-        label="Password"
-      />
+        <TextField
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <FiLock />
+              </InputAdornment>
+            ),
+          }}
+          helperText={errors.password?.message}
+          {...register("password")}
+          name="password"
+          label="Password"
+          type="password"
+        />
 
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        disableElevation
-      >
-        Enter
-      </Button>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          disableElevation
+        >
+          Enter
+        </Button>
 
-      <p>
-        Don't have an account? Register<Link to="/singup">here</Link>.
-      </p>
-    </form>
+        <p>
+          Don't have an account? Register<Link to="/">here</Link>.
+        </p>
+      </form>
+    </Container>
   );
 };
 
