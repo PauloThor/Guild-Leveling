@@ -11,6 +11,7 @@ export default createGlobalStyle`
         --white: #f0f0f0;
         --gray: #ccc;
         --darkgray: #333;
+        --green: #2ade2a;
     }
 
     body, div, h1, h2, h3, h4, h5, h6 {
