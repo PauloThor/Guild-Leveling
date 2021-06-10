@@ -1,5 +1,4 @@
 import { Button, makeStyles, Modal } from "@material-ui/core";
-import { CheckCircle, RemoveCircle } from "@material-ui/icons";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -27,6 +26,7 @@ const Container = styled.div`
       rgba(5, 3, 3, 1) 93%
     );
     padding: 5px;
+    font-size: 18px;
   }
 
   p {
