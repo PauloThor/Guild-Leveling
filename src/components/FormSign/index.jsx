@@ -19,7 +19,7 @@ const FormSing = () => {
     email: yup.string().email("Invalid email.").required("Required field"),
     password: yup
       .string()
-      .min(6, "Minimum 6 characters.")
+      .min(6, "Password must contain at least 6 characters.")
       .required("Required field"),
     confirmPassword: yup
       .string()

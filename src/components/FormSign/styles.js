@@ -117,6 +117,10 @@ export const Container = styled.div`
       }
     }
 
+    p.MuiFormHelperText-contained {
+      width: 256px;
+    }
+
     .button {
       transition: 0.25s;
       border-radius: 3px;
@@ -180,6 +184,10 @@ export const Container = styled.div`
           max-width: 80vw;
           min-width: 256px;
         }
+      }
+
+      p.MuiFormHelperText-contained {
+        width: 100%;
       }
     }
   }
