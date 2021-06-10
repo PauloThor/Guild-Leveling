@@ -78,8 +78,8 @@ const QuestList = () => {
               <button onClick={() => removeQuest(quest.id)}>Remover</button>
             </div>
           ))}
-        {quests.length > 0 &&
-          quests.map((quest, i) => (
+        {infoQuests.length > 0 &&
+          infoQuests.map((quest, i) => (
             <Quest name={quest.title} rank={quest.difficulty} />
           ))}
       </div>
