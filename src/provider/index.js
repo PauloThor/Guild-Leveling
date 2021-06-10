@@ -1,10 +1,13 @@
 import { UserProvider } from "./user";
 import { GuildProvider } from "./guild";
+import { QuestsProvider } from "./quests";
 
 const Provider = ({ children }) => {
   return (
     <UserProvider>
-      <GuildProvider>{children}</GuildProvider>
+      <QuestsProvider>
+        <GuildProvider>{children}</GuildProvider>
+      </QuestsProvider>
     </UserProvider>
   );
 };
