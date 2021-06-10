@@ -10,21 +10,13 @@ const Container = styled.div`
   /* border: 1px solid rgba(9, 73, 121, 1); */
   border-radius: 15px;
   text-align: center;
-  background: radial-gradient(
-    circle,
-    rgba(9, 73, 121, 1) 0%,
-    rgba(5, 3, 3, 1) 74%
-  );
+  background: var(--gradient-blue-dark);
   color: white;
   margin: 10px;
   padding: 10px;
 
   h4 {
-    background: radial-gradient(
-      circle,
-      rgba(90, 64, 84, 1) 10%,
-      rgba(5, 3, 3, 1) 93%
-    );
+    background: var(--gradient-brown-dark);
     padding: 5px;
     font-size: 18px;
   }
@@ -35,6 +27,9 @@ const Container = styled.div`
 `;
 
 const useStyles = makeStyles({
+  E: {
+    color: "green",
+  },
   D: {
     color: "green",
   },
@@ -42,6 +37,12 @@ const useStyles = makeStyles({
     color: "orange",
   },
   B: {
+    color: "red",
+  },
+  A: {
+    color: "red",
+  },
+  S: {
     color: "red",
   },
   modal: {
@@ -62,7 +63,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Quest = ({ name, difficulty }) => {
+const Quest = ({ name, rank }) => {
   const [isShowing, setIsShowing] = useState(false);
 
   const classes = useStyles();
@@ -75,7 +76,7 @@ const Quest = ({ name, difficulty }) => {
     <Container>
       <h4>{name}</h4>
       <p>
-        Rank <label className={classes[difficulty]}>{difficulty}</label>
+        Rank <label className={classes[rank]}>{rank}</label>
       </p>
 
       <Button onClick={handleShow}>

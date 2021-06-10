@@ -1,10 +1,14 @@
 import Quest from "./components/Quest";
+import { DataQuests } from "./database";
 
 const Styleguide = () => {
+  // const dRank = DataQuests.filter((e) => e === "D");
+
   return (
     <div>
-      <Quest name={"Caçar 10 goblins"} difficulty={"D"} />
-      <Quest name={"Derrotar o boss"} difficulty={"B"} />
+      {DataQuests.A.map((quest, i) => (
+        <Quest name={quest.title} rank={quest.difficulty} />
+      ))}
     </div>
   );
 };
