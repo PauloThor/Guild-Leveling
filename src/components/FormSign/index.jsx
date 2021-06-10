@@ -1,26 +1,30 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Button, InputAdornment, TextField } from "@material-ui/core";
-import { FiMail, FiLock, FiUser, FiEye } from "react-icons/fi";
+import { InputAdornment, TextField } from "@material-ui/core";
+import { FiMail, FiLock, FiUser, FiEye, FiEyeOff } from "react-icons/fi";
 import { Container } from "./styles";
 import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import api from "../../services";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import RPG from "../../assets/rpg.png";
 
 const FormSing = () => {
-  const [visibility, setVisibility] = useState("password");
+  const [inputType, setInputType] = useState("password");
+  const [user, setUser] = useState([]);
+  const history = useHistory();
+
   const schema = yup.object().shape({
-    username: yup.string().required("Required field"),
-    email: yup.string().email("Invalid email").required("Required field"),
+    username: yup.string().required("Required field."),
+    email: yup.string().email("Invalid email.").required("Required field"),
     password: yup
       .string()
-      .min(6, "Minimum 6 characters")
+      .min(6, "Minimum 6 characters.")
       .required("Required field"),
-    // confirPassword: yup
-    //   .string()
-    //   .required("Required field")
-    //   .oneOf([yup.ref("password")], "Passwords do not match"),
+    confirmPassword: yup
+      .string()
+      .required("Required field")
+      .oneOf([yup.ref("password")], "Passwords must match"),
   });
 
   const {
@@ -29,31 +33,45 @@ const FormSing = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const history = useHistory();
-
   const handleVisibility = () => {
-    if (visibility === "password") setVisibility("text");
-    else setVisibility("password");
+    inputType === "password" ? setInputType("text") : setInputType("password");
   };
 
-  //Envia os dados para cadastrar o usuário na API, e o leva para o dashboard
+  useEffect(() => {
+    if (user.username) {
+      api
+        .post("/users/", user)
+        .then(() => {
+          return history.push("/login");
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
+
   const onSubmit = (data) => {
-    console.log(data);
-    api
-      .post("/users/", data)
-      .then(() => {
-        return history.push("/");
-      })
-      .catch((err) => console.log("Falha na criação da conta"));
+    setUser({
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    });
   };
 
   return (
     <Container>
+      <div className="img">
+        <h1>Imagem aqui</h1>
+      </div>
+
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>Singup Guild Leveling</h2>
+        <div className="header">
+          <div className="signup-header">
+            <img src={RPG} alt="shield" />
+            <h1>Create Account</h1>
+          </div>
+        </div>
 
         <TextField
-          fullWidth
+          variant="outlined"
           InputProps={{
             startAdornment: (
               <InputAdornment>
@@ -63,12 +81,12 @@ const FormSing = () => {
           }}
           helperText={errors.username?.message}
           {...register("username")}
+          placeholder="username"
           label="Username"
-          name="username"
         />
 
         <TextField
-          fullWidth
+          variant="outlined"
           InputProps={{
             startAdornment: (
               <InputAdornment>
@@ -78,42 +96,66 @@ const FormSing = () => {
           }}
           helperText={errors.email?.message}
           {...register("email")}
-          name="email"
+          placeholder="email"
           label="E-mail"
         />
 
-        <TextField
-          fullWidth
-          type={visibility}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <FiLock />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                <FiEye onClick={handleVisibility} />
-              </InputAdornment>
-            ),
-          }}
-          helperText={errors.password?.message}
-          {...register("password")}
-          name="password"
-          label="Password"
-        />
+        <div className="password">
+          <TextField
+            variant="outlined"
+            type={inputType}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <FiLock />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  {inputType === "password" ? (
+                    <FiEyeOff onClick={handleVisibility} />
+                  ) : (
+                    <FiEye onClick={handleVisibility} />
+                  )}
+                </InputAdornment>
+              ),
+            }}
+            helperText={errors.password?.message}
+            {...register("password")}
+            placeholder="password"
+            label="Password"
+          />
 
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          disableElevation
-        >
-          Register
-        </Button>
+          <TextField
+            variant="outlined"
+            type={inputType}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <FiLock />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  {inputType === "password" ? (
+                    <FiEyeOff onClick={handleVisibility} />
+                  ) : (
+                    <FiEye onClick={handleVisibility} />
+                  )}
+                </InputAdornment>
+              ),
+            }}
+            helperText={errors.confirmPassword?.message}
+            {...register("confirmPassword")}
+            placeholder="password"
+            label="Confirm Password"
+          />
+        </div>
+
+        <input type="submit" className="button" value="Register" />
 
         <p>
-          Already have an account? Login <Link to="/login">here</Link>.
+          Already have an account? <Link to="/login">Sign In</Link>
         </p>
       </form>
     </Container>

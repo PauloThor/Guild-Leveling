@@ -31,6 +31,7 @@ export const UlContainer = styled.ul`
     padding-top: 3.5rem;
     margin-top: 0;
     transition: transform 0.3s ease-in-out;
+    padding: 56px 0 0 40px;
 
     li {
       color: var(--white);

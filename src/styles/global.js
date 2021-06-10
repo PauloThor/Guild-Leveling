@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
     * {
         box-sizing: border-box;
+        font-family: Montserrat, serif;
     }
 
     :root {
@@ -11,6 +12,8 @@ export default createGlobalStyle`
         --white: #f0f0f0;
         --gray: #ccc;
         --darkgray: #333;
+        --link: #385898;
+        --blue: #007AFF;
     }
 
     body, div, h1, h2, h3, h4, h5, h6 {
