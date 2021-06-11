@@ -35,14 +35,13 @@ const FormSing = () => {
     else setVisibility("password");
   };
 
-  //Envia os dados para cadastrar o usuário na API, e o leva para o dashboard
-  const onSubmit = (data) => {
+  const singupApp = (data) => {
     createAccount(data);
   };
 
   return (
     <Container>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(singupApp)}>
         <h2>Singup Guild Leveling</h2>
         <TextField
           fullWidth

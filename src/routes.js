@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
+import GuildSelect from "./pages/GuildSelect";
 
 const Routes = () => {
   return (
@@ -19,7 +20,7 @@ const Routes = () => {
         <Dashboard />
       </Route>
       <Route path="/guildselect">
-        <Dashboard />
+        <GuildSelect />
       </Route>
     </Switch>
   );

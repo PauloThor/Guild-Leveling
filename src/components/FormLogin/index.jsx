@@ -23,13 +23,13 @@ const FormLogin = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => {
+  const loginApp = (data) => {
     login(data);
   };
 
   return (
     <Container>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(loginApp)}>
         <h2>Login Guild Leveling</h2>
         <TextField
           fullWidth

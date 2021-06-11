@@ -9,21 +9,22 @@ export const QuestsProvider = ({ children }) => {
   const {
     infoUser: { access, id },
   } = useInfoUser();
+
   const getQuests = () => {
-    api
-      .get("/habits/personal/", {
-        headers: {
-          Authorization: `Bearer ${access}`,
-        },
-      })
-      .then((response) => setInfoQuests(response.data));
+      api
+        .get("/habits/personal/", {
+          headers: {
+            Authorization: `Bearer ${access}`,
+          },
+        })
+        .then((response) => setInfoQuests(response.data));
   };
 
   //carrega as quests ao renderizar a tela
-  useEffect(() => {
-    getQuests();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [infoQuests]);
+  // useEffect(() => {
+  //   getQuests();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [infoQuests]);
 
   //envia p API a nova quest, *necessita o id do usuario
   const addQuest = (data) => {
@@ -55,7 +56,7 @@ export const QuestsProvider = ({ children }) => {
   };
 
   return (
-    <QuestsContext.Provider value={{ infoQuests, addQuest, removeQuest }}>
+    <QuestsContext.Provider value={{ getQuests, infoQuests, addQuest, removeQuest }}>
       {children}
     </QuestsContext.Provider>
   );
