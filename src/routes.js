@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Styleguide from "./Styleguide";
 import Dashboard from "./pages/Dashboard";
 
 const Routes = () => {
@@ -11,11 +12,12 @@ const Routes = () => {
         <Navbar />
         <Signup />
       </Route>
-      <Route path="/login">
+      <Route exact path="/login">
         <Navbar />
         <Login />
       </Route>
-      <Route path="/dashboard">
+      <Route exact path="/styleguide" component={Styleguide} />
+      <Route exact path="/dashboard">
         <Dashboard />
       </Route>
     </Switch>
