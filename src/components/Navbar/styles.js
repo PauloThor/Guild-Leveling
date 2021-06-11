@@ -57,7 +57,7 @@ export const NavContainer = styled.nav`
 export const BurgerMenu = styled.div`
   width: 2rem;
   height: 2rem;
-  position: fixed;
+  position: relative;
   top: 11px;
   right: 20px;
   z-index: 1;
