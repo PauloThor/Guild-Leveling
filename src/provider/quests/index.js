@@ -1,12 +1,16 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services";
 import jwt_decode from "jwt-decode";
+import { useInfoUser } from "../user";
 
 const QuestsContext = createContext([]);
 
 export const QuestsProvider = ({ children }) => {
-  const [token] = useState(JSON.parse(localStorage.getItem("@habits:token")));
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("@habits:token")) || ""
+  );
   const [infoQuests, setInfoQuests] = useState([]);
+  const { getExp } = useInfoUser();
 
   const { user_id } = jwt_decode(token);
   const getQuests = () => {
@@ -16,20 +20,41 @@ export const QuestsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setInfoQuests(response.data));
+      .then((response) => {
+        setInfoQuests(response.data);
+        getExp(response.data);
+        console.log(response.data);
+      });
   };
 
   //carrega as quests ao renderizar a tela
   useEffect(() => {
     getQuests();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [infoQuests]);
+  }, []);
 
   //envia p API a nova quest, *necessita o id do usuario
   const addQuest = (data) => {
     const newQuest = {
       ...data,
       achieved: false,
+      how_much_achieved: 0,
+      user: user_id,
+    };
+    api
+      .post("/habits/", newQuest, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setInfoQuests(response))
+      .then(() => getQuests());
+  };
+
+  const addCompletedQuest = (data) => {
+    const newQuest = {
+      ...data,
+      achieved: true,
       how_much_achieved: 0,
       user: user_id,
     };
@@ -55,7 +80,16 @@ export const QuestsProvider = ({ children }) => {
   };
 
   return (
-    <QuestsContext.Provider value={{ infoQuests, addQuest, removeQuest }}>
+    <QuestsContext.Provider
+      value={{
+        infoQuests,
+        addQuest,
+        removeQuest,
+        addCompletedQuest,
+        token,
+        setToken,
+      }}
+    >
       {children}
     </QuestsContext.Provider>
   );

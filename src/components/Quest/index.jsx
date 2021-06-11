@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 import SwordIcon from "../../assets/sword.png";
 import CircleIcon from "../../assets/circle.png";
+import { useInfoQuests } from "../../provider/quests";
+import { useInfoUser } from "../../provider/user";
 
 const Container = styled.div`
   max-width: 300px;
@@ -65,11 +67,26 @@ const useStyles = makeStyles({
 
 const Quest = ({ name, rank }) => {
   const [isShowing, setIsShowing] = useState(false);
+  const { addQuest, removeQuest, addCompletedQuest } = useInfoQuests();
+  const { getExp } = useInfoUser();
+  const { infoQuests } = useInfoQuests();
 
   const classes = useStyles();
 
   const handleShow = () => {
     setIsShowing(!isShowing);
+  };
+
+  const handleAdd = () => {
+    const data = {
+      title: name,
+      category: "Leveling",
+      difficulty: rank,
+      frequency: 0,
+    };
+    console.log(data);
+    addCompletedQuest(data);
+    getExp(infoQuests);
   };
 
   return (
@@ -90,7 +107,7 @@ const Quest = ({ name, rank }) => {
           }}
         />
       </Button>
-      <Button>
+      <Button onClick={handleAdd}>
         <img
           src={SwordIcon}
           alt="sword"

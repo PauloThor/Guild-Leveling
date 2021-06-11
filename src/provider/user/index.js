@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext({});
 
@@ -14,7 +14,6 @@ export const UserProvider = ({ children }) => {
       A: 80,
       S: 200,
     };
-
     let exp = quests
       .filter((quest) => quest.achieved === true)
       .reduce((acc, quest) => acc + values[quest.difficulty], 0);
@@ -23,7 +22,6 @@ export const UserProvider = ({ children }) => {
     newUser.exp = exp;
 
     setInfoUser(newUser);
-    console.log(infoUser);
   };
 
   return (
