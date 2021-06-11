@@ -3,13 +3,12 @@ import * as yup from "yup";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
 import { FiLock, FiUser } from "react-icons/fi";
 import { Container } from "./styles";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useInfoUser } from "../../provider/user";
-import api from "../../services";
 
 const FormLogin = () => {
-  const { infoUser, setInfoUser } = useInfoUser();
+  const { login } = useInfoUser();
   const schema = yup.object().shape({
     username: yup.string().required("Required field"),
     password: yup
@@ -24,28 +23,14 @@ const FormLogin = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const history = useHistory();
-
-  //Da um post na API com os dados inseridos, e coloca o token da resposta no localStorage
   const onSubmit = (data) => {
-    api
-      .post("/sessions/", data)
-      .then((response) => {
-        const { access } = response.data; //desestrutura a resposta, pegando somente o access(token)
-        localStorage.setItem("@habits:token", JSON.stringify(access));
-        setInfoUser({access})
-      })
-      .then(() => {
-        return history.push("/dashboard");
-      })
-      .catch((err) => console.log("Erro ao logar"));
+    login(data);
   };
 
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2>Login Guild Leveling</h2>
-        {console.log(infoUser)}
         <TextField
           fullWidth
           InputProps={{
@@ -95,3 +80,14 @@ const FormLogin = () => {
 };
 
 export default FormLogin;
+// api
+// .post("/sessions/", data)
+// .then((response) => {
+//   const { access } = response.data; //desestrutura a resposta, pegando somente o access(token)
+//   localStorage.setItem("@habits:token", JSON.stringify(access));
+//   // setInfoUser({access})
+// })
+// .then(() => {
+//   return history.push("/dashboard");
+// })
+// .catch((err) => console.log("Erro ao logar"));

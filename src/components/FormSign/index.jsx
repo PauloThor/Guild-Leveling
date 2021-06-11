@@ -3,12 +3,13 @@ import * as yup from "yup";
 import { Button, InputAdornment, TextField } from "@material-ui/core";
 import { FiMail, FiLock, FiUser, FiEye } from "react-icons/fi";
 import { Container } from "./styles";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import api from "../../services";
 import { useState } from "react";
+import { useInfoUser } from "../../provider/user";
 
 const FormSing = () => {
+  const { createAccount } = useInfoUser();
   const [visibility, setVisibility] = useState("password");
   const schema = yup.object().shape({
     username: yup.string().required("Required field"),
@@ -29,8 +30,6 @@ const FormSing = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const history = useHistory();
-
   const handleVisibility = () => {
     if (visibility === "password") setVisibility("text");
     else setVisibility("password");
@@ -38,20 +37,13 @@ const FormSing = () => {
 
   //Envia os dados para cadastrar o usuário na API, e o leva para o dashboard
   const onSubmit = (data) => {
-    console.log(data);
-    api
-      .post("/users/", data)
-      .then(() => {
-        return history.push("/");
-      })
-      .catch((err) => console.log("Falha na criação da conta"));
+    createAccount(data);
   };
 
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2>Singup Guild Leveling</h2>
-
         <TextField
           fullWidth
           InputProps={{

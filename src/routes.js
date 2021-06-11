@@ -18,6 +18,9 @@ const Routes = () => {
       <Route path="/dashboard">
         <Dashboard />
       </Route>
+      <Route path="/guildselect">
+        <Dashboard />
+      </Route>
     </Switch>
   );
 };

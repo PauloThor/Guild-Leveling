@@ -1,19 +1,19 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services";
-import jwt_decode from "jwt-decode";
+import { useInfoUser } from "../../provider/user";
 
 const QuestsContext = createContext([]);
 
 export const QuestsProvider = ({ children }) => {
-  const [token] = useState(JSON.parse(localStorage.getItem("@habits:token")));
   const [infoQuests, setInfoQuests] = useState([]);
-
-  const { user_id } = jwt_decode(token);
+  const {
+    infoUser: { access, id },
+  } = useInfoUser();
   const getQuests = () => {
     api
       .get("/habits/personal/", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${access}`,
         },
       })
       .then((response) => setInfoQuests(response.data));
@@ -31,12 +31,12 @@ export const QuestsProvider = ({ children }) => {
       ...data,
       achieved: false,
       how_much_achieved: 0,
-      user: user_id,
+      user: id,
     };
     api
       .post("/habits/", newQuest, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${access}`,
         },
       })
       .then((response) => setInfoQuests(response))
@@ -48,7 +48,7 @@ export const QuestsProvider = ({ children }) => {
     api
       .delete(`/habits/${id}/`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${access}`,
         },
       })
       .then(() => getQuests());
