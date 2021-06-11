@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useInfoQuests } from "../../provider/quests";
 import "./styles";
 import { useEffect } from "react";
+import Quest from "../Quest";
 
 const QuestList = () => {
   const { getQuests, infoQuests, addQuest, removeQuest } = useInfoQuests();
@@ -84,6 +85,10 @@ const QuestList = () => {
               <p>Frequencia: {quest.frequency}</p>
               <button onClick={() => removeQuest(quest.id)}>Remover</button>
             </div>
+          ))}
+        {infoQuests.length > 0 &&
+          infoQuests.map((quest, i) => (
+            <Quest name={quest.title} rank={quest.difficulty} />
           ))}
       </div>
     </>

@@ -44,6 +44,23 @@ export const QuestsProvider = ({ children }) => {
       .then(() => getQuests());
   };
 
+  const addCompletedQuest = (data) => {
+    const newQuest = {
+      ...data,
+      achieved: true,
+      how_much_achieved: 0,
+      user: id,
+    };
+    api
+      .post("/habits/", newQuest, {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      })
+      .then((response) => setInfoQuests(response))
+      .then(() => getQuests());
+  };
+
   //deleta a quest usando o id da msm
   const removeQuest = (id) => {
     api
