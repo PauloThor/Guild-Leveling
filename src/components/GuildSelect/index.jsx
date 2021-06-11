@@ -26,10 +26,9 @@ const GuildSelect = () => {
           <span>{guild.name}</span>
           {/* <span>{guild.description}</span>
           <span>{guild.categoty}</span> */}
-          <button onClick={() => selectedGuild(guild.id)}>Entrar</button>
+          <button onClick={() => joinGuild(guild.id, access)}>Entrar</button>
         </div>
       ))}
-      <button onClick={createGuild}>create</button>
     </Container>
   );
 };

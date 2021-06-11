@@ -7,7 +7,7 @@ export const GuildProvider = ({ children }) => {
   const [infoGuilds, setInfoGuilds] = useState([]);
   const [infoGuild, setInfoGuild] = useState([]);
   const {
-    infoUser: { access, id },
+    infoUser: { id },
   } = useInfoUser();
   /*Filtra as guilds por meio da category delas, o user entra
   com a string e ela vai como query parameter no get*/
@@ -23,34 +23,18 @@ export const GuildProvider = ({ children }) => {
   };
 
   //Inserir o user na guild passando
-  const joinGuild = (id) => {
+  const joinGuild = (id, access) => {
     console.log(access);
     console.log(id);
 
     api
-      .post(`/groups/${id}/subscribe/`, {
+      .post(`/groups/${id}/subscribe/`, null, {
         headers: {
           Authorization: `Bearer ${access}`,
         },
       })
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
-  };
-
-  const createGuild = () => {
-    api.post(
-      "/groups/",
-      {
-        name: "novagildlvl",
-        description: "arzin",
-        category: "gl-teste",
-      },
-      {
-        header: {
-          Authorization: `Bearer ${access}`,
-        },
-      }
-    );
   };
 
   // const [token] =
@@ -88,7 +72,7 @@ export const GuildProvider = ({ children }) => {
 
   return (
     <GuildContext.Provider
-      value={{ infoGuild, infoGuilds, searchGuilds, joinGuild, createGuild }}
+      value={{ infoGuild, infoGuilds, searchGuilds, joinGuild }}
     >
       {children}
     </GuildContext.Provider>

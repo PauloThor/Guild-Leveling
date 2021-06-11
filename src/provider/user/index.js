@@ -4,9 +4,14 @@ import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 const UserContext = createContext({});
+const token = JSON.parse(localStorage.getItem("@habits:token")) || "";
+const auth = JSON.parse(localStorage.getItem("@habits:auth")) || false;
 
 export const UserProvider = ({ children }) => {
-  const [infoUser, setInfoUser] = useState({});
+  const [infoUser, setInfoUser] = useState({
+    access: token,
+    authenticated: auth,
+  });
 
   const history = useHistory();
 
@@ -18,6 +23,9 @@ export const UserProvider = ({ children }) => {
         const { access } = response.data; //desestrutura a resposta, pegando somente o access(token)
         const { user_id } = jwt_decode(access);
         setInfoUser({ access, id: user_id, authenticated: true });
+        localStorage.clear();
+        localStorage.setItem("@habits:token", JSON.stringify(access));
+        localStorage.setItem("@habits:auth", true);
       })
       .then(() => {
         return history.push("/dashboard");
