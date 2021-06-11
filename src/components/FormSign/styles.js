@@ -26,14 +26,15 @@ const appearFromLeft = keyframes`
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
 
   div.img {
     animation: ${appearFromLeft} 1.5s;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
 
     h1 {
-      margin-top: 340px;
+      margin-top: 390px;
     }
   }
 
@@ -47,10 +48,12 @@ export const Container = styled.div`
   }
 
   form {
+    width: 50vw;
     animation: ${appearFromRight} 1.5s;
     display: flex;
     flex-direction: column;
-    margin-top: 120px;
+    align-items: center;
+    margin-top: 170px;
 
     div.header {
       div.signup-header {
@@ -64,6 +67,7 @@ export const Container = styled.div`
         }
 
         h1 {
+          width: 300px;
           font-weight: 400;
           margin: 42px 0;
         }
@@ -159,15 +163,9 @@ export const Container = styled.div`
     }
 
     form {
-      max-width: 80vw;
+      width: 100vw;
       align-items: center;
       margin-top: 3vh;
-
-      div.header {
-        div.signup-header {
-          width: 100%;
-        }
-      }
 
       .MuiFormControl-root,
       .button,
@@ -178,6 +176,7 @@ export const Container = styled.div`
       div.password {
         max-width: 100%;
         flex-direction: column;
+        align-items: center;
 
         .MuiFormControl-root {
           width: 100%;
@@ -194,13 +193,26 @@ export const Container = styled.div`
 
   @media (max-width: 435px) {
     form {
+      max-width: 100vw;
+
       div.header {
+        margin: 0;
+
         div.signup-header {
-          h1 {
-            margin: 20px 0;
-          }
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          margin: 0;
+          text-align: center;
         }
       }
+    }
+  }
+
+  @media (max-width: 332px) {
+    form p {
+      text-align: center;
+      font-size: 15px;
     }
   }
 `;
