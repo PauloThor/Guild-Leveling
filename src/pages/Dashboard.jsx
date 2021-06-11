@@ -6,19 +6,13 @@ import { useInfoQuests } from "../provider/quests";
 import { useEffect } from "react";
 
 const Dashboard = () => {
-  const {
-    infoUser: { authenticated },
-    getExp,
-  } = useInfoUser();
-  const { infoQuests } = useInfoQuests();
+  // const {
+  //   infoUser: { authenticated },
+  // } = useInfoUser();
 
-  useEffect(() => {
-    getExp(infoQuests);
-  }, []);
-
-  if (!authenticated) {
-    return <Redirect to="/login" />;
-  }
+  // if (!authenticated) {
+  //   return <Redirect to="/login" />;
+  // }
   return <QuestList />;
 };
 

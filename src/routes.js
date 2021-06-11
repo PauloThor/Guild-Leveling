@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Styleguide from "./Styleguide";
 import Dashboard from "./pages/Dashboard";
+import GuildSelect from "./pages/GuildSelect";
 
 const Routes = () => {
   return (
@@ -19,6 +20,9 @@ const Routes = () => {
       <Route exact path="/styleguide" component={Styleguide} />
       <Route exact path="/dashboard">
         <Dashboard />
+      </Route>
+      <Route path="/guildselect">
+        <GuildSelect />
       </Route>
     </Switch>
   );

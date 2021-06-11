@@ -1,19 +1,18 @@
 import { FiMail, FiLock, FiUser, FiEye, FiEyeOff } from "react-icons/fi";
 import { InputAdornment, TextField } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import RPG from "../../assets/rpg.png";
-import { toast } from "react-toastify";
 import { Container } from "./styles";
-import api from "../../services";
 import * as yup from "yup";
+import { useInfoUser } from "../../provider/user";
 
 const FormSing = () => {
   const [inputType, setInputType] = useState("password");
   const [user, setUser] = useState([]);
-  const history = useHistory();
+  const { createAccount } = useInfoUser();
 
   const schema = yup.object().shape({
     username: yup.string().required("Required field."),
@@ -40,12 +39,7 @@ const FormSing = () => {
 
   useEffect(() => {
     if (user.username) {
-      api
-        .post("/users/", user)
-        .then(() => {
-          return history.push("/login");
-        })
-        .catch(() => toast.error("Username already exists."));
+      createAccount(user);
     }
   }, [user]);
 

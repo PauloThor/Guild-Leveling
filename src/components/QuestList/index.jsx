@@ -4,10 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useInfoQuests } from "../../provider/quests";
 import "./styles";
+import { useEffect } from "react";
 import Quest from "../Quest";
 
 const QuestList = () => {
-  const { infoQuests, addQuest, removeQuest } = useInfoQuests();
+  const { getQuests, infoQuests, addQuest, removeQuest } = useInfoQuests();
 
   const schema = yup.object().shape({
     title: yup.string().required("Required field"),
@@ -15,6 +16,12 @@ const QuestList = () => {
     difficulty: yup.string().required("Required field"),
     frequency: yup.string().required("Required field"),
   });
+
+  //Hook para buscar as quests
+  useEffect(() => {
+    getQuests();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const {
     register,

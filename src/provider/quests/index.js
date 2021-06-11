@@ -1,37 +1,30 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services";
-import jwt_decode from "jwt-decode";
-import { useInfoUser } from "../user";
+import { useInfoUser } from "../../provider/user";
 
 const QuestsContext = createContext([]);
 
 export const QuestsProvider = ({ children }) => {
-  const [token, setToken] = useState(
-    JSON.parse(localStorage.getItem("@habits:token")) || ""
-  );
   const [infoQuests, setInfoQuests] = useState([]);
-  const { getExp } = useInfoUser();
+  const {
+    infoUser: { access, id },
+  } = useInfoUser();
 
-  const { user_id } = jwt_decode(token);
   const getQuests = () => {
-    api
-      .get("/habits/personal/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        setInfoQuests(response.data);
-        getExp(response.data);
-        console.log(response.data);
-      });
+      api
+        .get("/habits/personal/", {
+          headers: {
+            Authorization: `Bearer ${access}`,
+          },
+        })
+        .then((response) => setInfoQuests(response.data));
   };
 
   //carrega as quests ao renderizar a tela
-  useEffect(() => {
-    getQuests();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   getQuests();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [infoQuests]);
 
   //envia p API a nova quest, *necessita o id do usuario
   const addQuest = (data) => {
@@ -39,12 +32,12 @@ export const QuestsProvider = ({ children }) => {
       ...data,
       achieved: false,
       how_much_achieved: 0,
-      user: user_id,
+      user: id,
     };
     api
       .post("/habits/", newQuest, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${access}`,
         },
       })
       .then((response) => setInfoQuests(response))
@@ -56,12 +49,12 @@ export const QuestsProvider = ({ children }) => {
       ...data,
       achieved: true,
       how_much_achieved: 0,
-      user: user_id,
+      user: id,
     };
     api
       .post("/habits/", newQuest, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${access}`,
         },
       })
       .then((response) => setInfoQuests(response))
@@ -73,23 +66,14 @@ export const QuestsProvider = ({ children }) => {
     api
       .delete(`/habits/${id}/`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${access}`,
         },
       })
       .then(() => getQuests());
   };
 
   return (
-    <QuestsContext.Provider
-      value={{
-        infoQuests,
-        addQuest,
-        removeQuest,
-        addCompletedQuest,
-        token,
-        setToken,
-      }}
-    >
+    <QuestsContext.Provider value={{ getQuests, infoQuests, addQuest, removeQuest }}>
       {children}
     </QuestsContext.Provider>
   );
