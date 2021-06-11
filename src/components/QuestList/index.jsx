@@ -5,9 +5,12 @@ import { useForm } from "react-hook-form";
 import { useInfoQuests } from "../../provider/quests";
 import "./styles";
 import Quest from "../Quest";
+import { useInfoUser } from "../../provider/user";
 
 const QuestList = () => {
   const { infoQuests, addQuest, removeQuest } = useInfoQuests();
+  const { getExp } = useInfoUser();
+
   const schema = yup.object().shape({
     title: yup.string().required("Required field"),
     category: yup.string().required("Required field"),
@@ -82,6 +85,7 @@ const QuestList = () => {
           infoQuests.map((quest, i) => (
             <Quest name={quest.title} rank={quest.difficulty} />
           ))}
+        <button onClick={() => getExp(infoQuests)}>Soma</button>
       </div>
     </>
   );
