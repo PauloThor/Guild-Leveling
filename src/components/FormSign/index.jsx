@@ -1,13 +1,14 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { InputAdornment, TextField } from "@material-ui/core";
 import { FiMail, FiLock, FiUser, FiEye, FiEyeOff } from "react-icons/fi";
-import { Container } from "./styles";
+import { InputAdornment, TextField } from "@material-ui/core";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useHistory } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import api from "../../services";
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import RPG from "../../assets/rpg.png";
+import { toast } from "react-toastify";
+import { Container } from "./styles";
+import api from "../../services";
+import * as yup from "yup";
 
 const FormSing = () => {
   const [inputType, setInputType] = useState("password");
@@ -44,7 +45,7 @@ const FormSing = () => {
         .then(() => {
           return history.push("/login");
         })
-        .catch((err) => console.log(err));
+        .catch(() => toast.error("Username already exists."));
     }
   }, [user]);
 
