@@ -4,9 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useInfoQuests } from "../../provider/quests";
 import "./styles";
+import Quest from "../Quest";
 
 const QuestList = () => {
   const { infoQuests, addQuest, removeQuest } = useInfoQuests();
+
   const schema = yup.object().shape({
     title: yup.string().required("Required field"),
     category: yup.string().required("Required field"),
@@ -76,6 +78,10 @@ const QuestList = () => {
               <p>Frequencia: {quest.frequency}</p>
               <button onClick={() => removeQuest(quest.id)}>Remover</button>
             </div>
+          ))}
+        {infoQuests.length > 0 &&
+          infoQuests.map((quest, i) => (
+            <Quest name={quest.title} rank={quest.difficulty} />
           ))}
       </div>
     </>

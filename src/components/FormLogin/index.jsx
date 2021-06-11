@@ -33,7 +33,8 @@ const FormLogin = () => {
       .then((response) => {
         const { access } = response.data; //desestrutura a resposta, pegando somente o access(token)
         localStorage.setItem("@habits:token", JSON.stringify(access));
-        setInfoUser({access, authenticated: true})
+
+        setInfoUser({ access, authenticated: true });
       })
       .then(() => {
         return history.push("/dashboard");
