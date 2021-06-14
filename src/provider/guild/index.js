@@ -44,7 +44,7 @@ export const GuildProvider = ({ children }) => {
   };
 
   const updateMainGuilds = () => {
-    searchGuilds("leveling");
+    searchGuilds("Leveling");
 
     const filter = (name) => infoGuilds.filter((guild) => guild.name === name);
 

@@ -3,6 +3,7 @@ import api from "../../services";
 import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { useInfoQuests } from "../quests";
+import { useInfoGuild } from "../guild";
 
 const UserContext = createContext({});
 
@@ -18,8 +19,11 @@ export const UserProvider = ({ children }) => {
     exp: 0,
     guildRank: "Novice",
     id: identification,
+    username: "",
+    guilds: [],
   });
-  const { infoQuests } = useInfoQuests();
+  const { infoQuests, getQuests } = useInfoQuests();
+  const { updateMainGuilds } = useInfoGuild();
 
   const updateStatus = (quests) => {
     const values = {
@@ -85,6 +89,9 @@ export const UserProvider = ({ children }) => {
 
         setInfoUser({ ...infoUser, access, id: user_id, authenticated: true });
         updateStatus(infoQuests);
+        getQuests();
+        updateStatus(infoQuests);
+        updateMainGuilds();
         localStorage.clear();
         localStorage.setItem("@token", JSON.stringify(access));
         localStorage.setItem("@auth", true);
@@ -118,7 +125,7 @@ export const UserProvider = ({ children }) => {
         const { user_id } = jwt_decode(access);
         localStorage.clear();
         localStorage.setItem("token", JSON.stringify(access));
-        setInfoUser({ access, id: user_id, authenticated: true });
+        setInfoUser({ ...infoUser, access, id: user_id, authenticated: true });
         console.log(response.data);
       })
       .catch((err) => console.log(err, "Erro ao logar"));

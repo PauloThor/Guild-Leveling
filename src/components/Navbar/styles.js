@@ -6,8 +6,10 @@ export const UlContainer = styled.ul`
   flex-flow: row nowrap;
 
   li {
+    cursor: pointer;
     font-size: 20px;
     margin-right: 50px;
+    height: 25px;
   }
 
   li:hover {
@@ -47,18 +49,18 @@ export const UlContainer = styled.ul`
 
 export const NavContainer = styled.nav`
   width: 100%;
-  height: 55px;
+  height: 7vh;
   padding: 0;
   display: flex;
   justify-content: space-between;
   box-shadow: 0px 7px 15px -5px rgb(0 0 0 / 75%);
+  align-items: center;
 `;
 
 export const BurgerMenu = styled.div`
   width: 2rem;
   height: 2rem;
   position: relative;
-  top: 11px;
   right: 20px;
   z-index: 1;
   display: none;

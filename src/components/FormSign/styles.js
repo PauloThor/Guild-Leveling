@@ -26,146 +26,153 @@ const appearFromLeft = keyframes`
 
 export const Container = styled.div`
   display: flex;
+  height: 93vh;
+  background: var(--bg-gradient);
 
-  div.img {
+  div.left-container {
     animation: ${appearFromLeft} 1.5s;
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-
-    h1 {
-      margin-top: 390px;
-    }
   }
 
-  form,
-  div.header,
-  div.signup-header,
-  .MuiFormControl-root,
-  input.button,
-  p {
-    min-width: 256px;
-  }
-
-  form {
-    width: 50vw;
-    animation: ${appearFromRight} 1.5s;
+  div.right-container,
+  div.left-container {
+    height: 100%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: 150px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  div.right-container {
+    animation: ${appearFromRight} 1.5s;
+
+    form,
+    div.header,
+    .MuiFormControl-root,
+    input.button,
+    p {
+      min-width: 256px;
+    }
+
+    div.form-container {
+      width: 55%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 15px;
+      background: var(--white);
+      min-width: 477px;
+      padding: 20px 0;
+      box-shadow: 0px 0px 15px 2px #000000;
+    }
 
     div.header {
-      div.signup-header {
-        width: 87%;
-        display: flex;
-        margin: 0 auto 10px auto;
-
-        img {
-          width: 100px;
-          height: 100px;
-        }
-
-        h1 {
-          width: 300px;
-          font-weight: 400;
-          margin: 42px 0;
-        }
-      }
-    }
-
-    input {
-      margin-top: 1.2px;
-    }
-
-    .MuiInputAdornment-positionEnd svg {
-      cursor: pointer;
-    }
-
-    .MuiFormControl-root {
-      margin-bottom: 20px;
-      width: 400px;
-    }
-
-    .MuiInputAdornment-positionStart {
-      margin-right: 0;
-    }
-
-    .MuiOutlinedInput-inputAdornedStart {
-      padding-left: 14px;
-    }
-
-    .MuiFormHelperText-contained {
-      text-align: start;
-      margin-left: 3px;
-      color: red;
-      margin-right: 0px;
-    }
-
-    .MuiOutlinedInput-adornedStart {
-      padding-left: 18px;
-    }
-
-    .MuiOutlinedInput-adornedEnd {
-      padding-right: 18px;
-    }
-
-    p {
-      z-index: -1;
-      text-align: end;
-      width: 400px;
-      margin-bottom: 0;
-
-      a {
-        color: var(--link);
-      }
-    }
-
-    p.MuiFormHelperText-contained {
-      width: 256px;
-    }
-
-    .button {
-      transition: 0.25s;
-      border-radius: 3px;
-      border: none;
-      background: var(--blue);
-      color: var(--white);
-      cursor: pointer;
-      width: 400px;
-      height: 40px;
-      font-size: 18px;
-    }
-
-    .button:before {
-      z-index: -1;
-    }
-
-    .button:hover {
-      filter: brightness(90%);
-    }
-
-    div.password {
-      width: 400px;
+      width: 87%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      h1 {
+        font-weight: 400;
+        margin: 42px 0;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .MuiInputAdornment-positionEnd svg {
+        cursor: pointer;
+      }
 
       .MuiFormControl-root {
-        min-width: 177px;
-        width: 190px;
+        margin-bottom: 20px;
+        width: 400px;
+      }
+
+      .MuiInputAdornment-positionStart {
+        margin-right: 0;
+      }
+
+      .MuiOutlinedInput-inputAdornedStart {
+        padding-left: 14px;
+      }
+
+      .MuiFormHelperText-contained {
+        text-align: start;
+        margin-left: 3px;
+        color: red;
+        margin-right: 0px;
+      }
+
+      .MuiOutlinedInput-adornedStart {
+        padding-left: 18px;
+      }
+
+      .MuiOutlinedInput-adornedEnd {
+        padding-right: 18px;
+      }
+
+      p {
+        text-align: end;
+        width: 400px;
+        margin-bottom: 0;
+
+        a {
+          color: var(--link);
+        }
+      }
+
+      p.MuiFormHelperText-contained {
+        width: 256px;
+      }
+
+      .button {
+        transition: 0.25s;
+        border-radius: 3px;
+        border: none;
+        background: var(--blue);
+        color: var(--white);
+        cursor: pointer;
+        width: 400px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .button:before {
+        z-index: -1;
+      }
+
+      .button:hover {
+        filter: brightness(85%);
+      }
+
+      div.password {
+        width: 400px;
+        display: flex;
+        justify-content: space-between;
+
+        .MuiFormControl-root {
+          min-width: 177px;
+          width: 190px;
+        }
       }
     }
   }
 
   @media (max-width: 1100px) {
-    div.img {
+    div.left-container {
       display: none;
     }
 
-    form {
-      width: 100vw;
+    div.right-container form {
       align-items: center;
-      margin-top: 3vh;
 
       .MuiFormControl-root,
       .button,
@@ -180,37 +187,44 @@ export const Container = styled.div`
 
         .MuiFormControl-root {
           width: 100%;
-          max-width: 80vw;
           min-width: 256px;
         }
-      }
-
-      p.MuiFormHelperText-contained {
-        width: 100%;
       }
     }
   }
 
   @media (max-width: 435px) {
-    form {
-      max-width: 100vw;
+    div.right-container div.form-container {
+      min-width: initial;
+      width: 90%;
+      height: initial;
+      padding: 0 0 15px 0;
 
       div.header {
-        margin: 0;
+        align-items: center;
 
-        div.signup-header {
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
-          margin: 0;
-          text-align: center;
+        h1 {
+          margin: 30px 0;
         }
+      }
+    }
+
+    div.right-container form {
+      max-width: 100vw;
+
+      .MuiOutlinedInput-inputAdornedStart {
+        padding: 15px;
+      }
+
+      input.button {
+        height: 30px;
+        font-size: 16px;
       }
     }
   }
 
   @media (max-width: 332px) {
-    form p {
+    div.right-container form p {
       text-align: center;
       font-size: 15px;
     }

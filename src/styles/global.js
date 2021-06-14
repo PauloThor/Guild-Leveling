@@ -7,7 +7,7 @@ export default createGlobalStyle`
     }
 
     :root {
-        --black: rgba(5, 3, 3, 1);
+        --black: #050303;
         --navy: #0d2538;
         --white: #f0f0f0;
         --gray: #ccc;
@@ -15,14 +15,11 @@ export default createGlobalStyle`
         --link: #385898;
         --blue: #007AFF;
 	    --green: #2ade2a;
-        --darkblue: rgba(9, 73, 121, 1);
-        --brown: rgba(90, 64, 84, 1);
-        --gradient-blue-dark: radial-gradient(circle,rgba(9, 73, 121, 1) 0%,rgba(5, 3, 3, 1) 74%);
-        --gradient-brown-dark: radial-gradient(
-            circle,
-            rgba(90, 64, 84, 1) 10%,
-            rgba(5, 3, 3, 1) 93%
-        );
+        --darkblue: #094979;
+        --brown: #5a4054;
+        --gradient-blue-dark: radial-gradient(circle, var(--darkblue) 0%, var(--black) 84%);
+        --gradient-brown-dark: radial-gradient(circle, var(--brown) 10%, var(--black) 93%);
+        --bg-gradient: radial-gradient(circle, var(--darkblue) 0%, var(--black) 110%);
         --font: 'MedievalSharp', cursive;
     }
 
@@ -48,4 +45,12 @@ export default createGlobalStyle`
         cursor: pointer;
     }
 
+    div.App {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    body {
+        /* overflow: hidden; */
+    }
 `;
