@@ -1,34 +1,44 @@
 import { Container } from "./styles";
 import { useInfoGuild } from "../../provider/guild";
-import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useInfoUser } from "../../provider/user";
+import { starterGuilds } from "../../database";
+import GuildCard from "./GuildCard";
+
+import Logo from "../../assets/logo.png";
+import LogoGray from "../../assets/logo-gray.png";
+import LogoWhite from "../../assets/logo-white.png";
 
 const GuildSelect = () => {
-  const { searchGuilds, infoGuilds, joinGuild, createGuild } = useInfoGuild();
+  const { searchGuilds, infoGuilds } = useInfoGuild();
   const {
     infoUser: { access },
   } = useInfoUser();
 
-  const history = useHistory();
   useEffect(() => {
-    searchGuilds("gl-teste");
+    searchGuilds("leveling");
+    // eslint-disable-next-line
   }, []);
-
-  const selectedGuild = (id) => {
-    joinGuild(id, access);
-  };
 
   return (
     <Container>
-      {infoGuilds.map((guild) => (
-        <div key={guild.id}>
-          <span>{guild.name}</span>
-          {/* <span>{guild.description}</span>
-          <span>{guild.categoty}</span> */}
-          <button onClick={() => joinGuild(guild.id, access)}>Entrar</button>
-        </div>
-      ))}
+      <h2>Which guild do you choose?</h2>
+      {infoGuilds
+        .filter((guild) => starterGuilds.includes(guild.name))
+        .map((guild) => (
+          <div key={guild.id}>
+            <GuildCard
+              name={guild.name}
+              id={guild.id}
+              access={access}
+              description={guild.description}
+              members={guild.users_on_group.length}
+            />
+          </div>
+        ))}
+      <img src={Logo} alt="logo" />
+      <img src={LogoGray} alt="logo" />
+      <img src={LogoWhite} alt="logo" />
     </Container>
   );
 };

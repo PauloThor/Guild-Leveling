@@ -6,9 +6,21 @@ import { useInfoQuests } from "../../provider/quests";
 import "./styles";
 import { useEffect } from "react";
 import Quest from "../Quest";
+import { useInfoUser } from "../../provider/user";
+import RankQuests from "./RankQuests";
+import DailyQuests from "./DailyQuests";
 
 const QuestList = () => {
-  const { getQuests, infoQuests, addQuest, removeQuest } = useInfoQuests();
+  const {
+    getQuests,
+    infoQuests,
+    addQuest,
+    removeQuest,
+    getCurrentQuests,
+    currentQuests,
+  } = useInfoQuests();
+
+  const { infoUser, updateStatus } = useInfoUser();
 
   const schema = yup.object().shape({
     title: yup.string().required("Required field"),
@@ -17,11 +29,21 @@ const QuestList = () => {
     frequency: yup.string().required("Required field"),
   });
 
-  //Hook para buscar as quests
   useEffect(() => {
     getQuests();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // useEffect(() => {
+  //   const currentLevel = infoUser.level;
+  //   updateStatus(infoQuests);
+
+  //   if (infoUser.level !== currentLevel) {
+  //     getCurrentQuests();
+  //   }
+  //   console.log(infoUser);
+  //   // eslint-disable-next-line
+  // }, [infoUser, infoQuests]);
 
   const {
     register,
@@ -31,7 +53,7 @@ const QuestList = () => {
 
   return (
     <>
-      <h2>Quests</h2>
+      {/* <h2>Quests</h2>
 
       <form onSubmit={handleSubmit(addQuest)}>
         <TextField
@@ -74,7 +96,7 @@ const QuestList = () => {
         >
           Cadastrar
         </Button>
-      </form>
+      </form> */}
       <div>
         {infoQuests.length > 0 &&
           infoQuests.map((quest, index) => (
@@ -86,10 +108,12 @@ const QuestList = () => {
               <button onClick={() => removeQuest(quest.id)}>Remover</button>
             </div>
           ))}
-        {infoQuests.length > 0 &&
-          infoQuests.map((quest, i) => (
-            <Quest name={quest.title} rank={quest.difficulty} />
-          ))}
+        <div style={{ display: "flex" }}>
+          <RankQuests />
+          <DailyQuests />
+        </div>
+        <button onClick={() => updateStatus(infoQuests)}>Testar status</button>
+        <button onClick={() => getCurrentQuests()}>Testar quests atuais</button>
       </div>
     </>
   );

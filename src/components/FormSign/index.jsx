@@ -41,6 +41,7 @@ const FormSing = () => {
     if (user.username) {
       createAccount(user);
     }
+    // eslint-disable-next-line
   }, [user]);
 
   const onSubmit = (data) => {

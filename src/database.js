@@ -1,3 +1,10 @@
+export const starterGuilds = [
+  "Scavenger Guild",
+  "Hunters Guild",
+  "Fame Guild",
+  "Ahjin Guild",
+];
+
 export const DataQuests = {
   E: [
     {
@@ -240,4 +247,16 @@ export const DataQuests = {
       frequency: 1,
     },
   ],
+};
+
+export const questsByLevel = {
+  Novice: ["E", "D", "D", "C"],
+  Apprentice: ["D", "D", "C", "B"],
+  Assistant: ["D", "C", "C", "B"],
+  Adventurer: ["C", "C", "B", "B"],
+  Soldier: ["C", "B", "B", "A"],
+  Knight: ["C", "B", "A", "S"],
+  Commander: ["B", "B", "A", "S"],
+  Paladin: ["B", "A", "A", "S"],
+  Champion: ["A", "S", "S", "S"],
 };

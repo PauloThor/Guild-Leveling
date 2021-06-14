@@ -2,6 +2,8 @@ import { FiLock, FiUser, FiEye, FiEyeOff } from "react-icons/fi";
 import { InputAdornment, TextField } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useInfoUser } from "../../provider/user";
+import { useInfoQuests } from "../../provider/quests";
+import { useInfoGuild } from "../../provider/guild";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Container } from "./styles";
@@ -10,8 +12,10 @@ import RPG from "../../assets/rpg.png";
 import * as yup from "yup";
 
 const FormLogin = () => {
+  const { login, updateStatus } = useInfoUser();
+  const { infoQuests, getQuests } = useInfoQuests();
+  const { updateMainGuilds } = useInfoGuild();
   const [inputType, setInputType] = useState("password");
-  const { login } = useInfoUser();
 
   const schema = yup.object().shape({
     username: yup.string().required("Required field"),
@@ -24,6 +28,12 @@ const FormLogin = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+  const loginApp = (data) => {
+    login(data);
+    getQuests();
+    updateStatus(infoQuests);
+    updateMainGuilds();
+  };
   const handleVisibility = () => {
     inputType === "password" ? setInputType("text") : setInputType("password");
   };

@@ -1,18 +1,18 @@
+import GuildRanking from "./components/GuildSelect/GuildRanking";
 import Quest from "./components/Quest";
 import { DataQuests } from "./database";
-import { useInfoQuests } from "./provider/quests";
 import { useInfoUser } from "./provider/user";
 
 const Styleguide = () => {
-  const { infoQuests, addQuest, removeQuest } = useInfoQuests();
-  const { getExp, infoUser } = useInfoUser();
+  const { infoUser } = useInfoUser();
 
   return (
     <div>
-      {DataQuests.S.map((quest, i) => (
+      {/* {DataQuests.A.map((quest, i) => (
         <Quest name={quest.title} rank={quest.difficulty} />
-      ))}
+      ))} */}
       <p>{infoUser.exp}</p>
+      <GuildRanking />
     </div>
   );
 };

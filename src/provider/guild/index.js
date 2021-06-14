@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services";
 import { useInfoUser } from "../../provider/user";
 const GuildContext = createContext([]);
@@ -6,20 +6,26 @@ const GuildContext = createContext([]);
 export const GuildProvider = ({ children }) => {
   const [infoGuilds, setInfoGuilds] = useState([]);
   const [infoGuild, setInfoGuild] = useState([]);
+  const [mainGuilds, setMainGuilds] = useState({
+    "Scavenger Guild": [],
+    "Hunters Guild": [],
+    "Fame Guild": [],
+    "Ahjin Guild": [],
+  });
+
   const {
-    infoUser: { id },
+    infoUser: { id, access },
   } = useInfoUser();
-  /*Filtra as guilds por meio da category delas, o user entra
-  com a string e ela vai como query parameter no get*/
+
   const searchGuilds = (itemToSearch) => {
     api
       .get(`/groups/?category=${itemToSearch}`)
-      .then((respose) => setInfoGuilds(respose.data.results));
+      .then((response) => setInfoGuilds(response.data.results));
   };
 
   //Pega uma guilda especifica com a id da msms;
   const getSpecificGuild = (id) => {
-    api.get(`/groups/${id}`).then((response) => setInfoGuild(response));
+    return api.get(`/groups/${id}/`).then((response) => response.data);
   };
 
   //Inserir o user na guild passando
@@ -35,6 +41,22 @@ export const GuildProvider = ({ children }) => {
       })
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
+  };
+
+  const updateMainGuilds = () => {
+    searchGuilds("Leveling");
+
+    const filter = (name) => infoGuilds.filter((guild) => guild.name === name);
+
+    const newMainGuilds = {
+      "Scavenger Guild": filter("Scavenger Guild")[0],
+      "Hunters Guild": filter("Hunters Guild")[0],
+      "Fame Guild": filter("Fame Guild")[0],
+      "Ahjin Guild": filter("Ahjin Guild")[0],
+    };
+
+    setMainGuilds(newMainGuilds);
+    console.log(mainGuilds);
   };
 
   // const [token] =
@@ -72,7 +94,15 @@ export const GuildProvider = ({ children }) => {
 
   return (
     <GuildContext.Provider
-      value={{ infoGuild, infoGuilds, searchGuilds, joinGuild }}
+      value={{
+        infoGuild,
+        infoGuilds,
+        searchGuilds,
+        joinGuild,
+        getSpecificGuild,
+        mainGuilds,
+        updateMainGuilds,
+      }}
     >
       {children}
     </GuildContext.Provider>

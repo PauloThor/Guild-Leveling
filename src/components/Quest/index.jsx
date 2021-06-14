@@ -5,41 +5,58 @@ import styled from "styled-components";
 import SwordIcon from "../../assets/sword.png";
 import CircleIcon from "../../assets/circle.png";
 import { useInfoQuests } from "../../provider/quests";
-import { useInfoUser } from "../../provider/user";
+import { useEffect } from "react";
 
 const Container = styled.div`
   max-width: 300px;
-  /* border: 1px solid rgba(9, 73, 121, 1); */
+  border: 1px solid var(--brown);
   border-radius: 15px;
   text-align: center;
   background: var(--gradient-blue-dark);
   color: white;
   margin: 10px;
   padding: 10px;
+  font-family: var(--font);
+  animation: 1s fromLeft;
+
+  @keyframes fromLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
 
   h4 {
     background: var(--gradient-brown-dark);
     padding: 5px;
-    font-size: 18px;
+    font-size: 1.2rem;
+    font-family: var(--font);
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   p {
     margin: 5px;
+    font-family: var(--font);
   }
 `;
 
 const useStyles = makeStyles({
   E: {
-    color: "green",
+    color: "#6de256",
   },
   D: {
     color: "green",
   },
   C: {
-    color: "orange",
+    color: "#b8d836",
   },
   B: {
-    color: "red",
+    color: "orange",
   },
   A: {
     color: "red",
@@ -65,11 +82,16 @@ const useStyles = makeStyles({
   },
 });
 
-const Quest = ({ name, rank }) => {
+const Quest = ({ name, rank, quest, type, id }) => {
   const [isShowing, setIsShowing] = useState(false);
-  const { addQuest, removeQuest, addCompletedQuest } = useInfoQuests();
-  const { getExp } = useInfoUser();
-  const { infoQuests } = useInfoQuests();
+  const {
+    removeQuest,
+    addCompletedQuest,
+    removeCurrentQuest,
+    getQuests,
+    removeDaily,
+    completeQuest,
+  } = useInfoQuests();
 
   const classes = useStyles();
 
@@ -80,13 +102,28 @@ const Quest = ({ name, rank }) => {
   const handleAdd = () => {
     const data = {
       title: name,
-      category: "Leveling",
       difficulty: rank,
-      frequency: 0,
+      achieved: true,
     };
-    console.log(data);
+
+    removeCurrentQuest(quest);
     addCompletedQuest(data);
-    getExp(infoQuests);
+  };
+
+  const handleRemove = () => {
+    removeCurrentQuest(quest);
+    handleShow();
+  };
+
+  const handleRemoveDaily = () => {
+    removeQuest(quest.id);
+    removeDaily(quest.title);
+    handleShow();
+    getQuests();
+  };
+
+  const handleComplete = () => {
+    completeQuest(id);
   };
 
   return (
@@ -107,13 +144,12 @@ const Quest = ({ name, rank }) => {
           }}
         />
       </Button>
-      <Button onClick={handleAdd}>
+      <Button onClick={type === "ranked" ? handleAdd : handleComplete}>
         <img
           src={SwordIcon}
           alt="sword"
           style={{ backgroundColor: "transparent", width: "50px" }}
         />
-        {/* <CheckCircle /> */}
       </Button>
       <Modal open={isShowing} onClose={handleShow}>
         <div className={classes.modal}>
@@ -126,7 +162,12 @@ const Quest = ({ name, rank }) => {
             >
               No
             </Button>
-            <Button variant="outlined">Yes</Button>
+            <Button
+              variant="outlined"
+              onClick={type === "ranked" ? handleRemove : handleRemoveDaily}
+            >
+              Yes
+            </Button>
           </div>
         </div>
       </Modal>
