@@ -7,10 +7,12 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useInfoUser } from "../../provider/user";
 import { useInfoQuests } from "../../provider/quests";
+import { useInfoGuild } from "../../provider/guild";
 
 const FormLogin = () => {
   const { login, updateStatus } = useInfoUser();
   const { infoQuests, getQuests } = useInfoQuests();
+  const { updateMainGuilds } = useInfoGuild();
   const schema = yup.object().shape({
     username: yup.string().required("Required field"),
     password: yup
@@ -29,6 +31,7 @@ const FormLogin = () => {
     login(data);
     getQuests();
     updateStatus(infoQuests);
+    updateMainGuilds();
   };
 
   return (
