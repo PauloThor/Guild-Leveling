@@ -22,8 +22,8 @@ export const UserProvider = ({ children }) => {
     username: "",
     guilds: [],
   });
-  const { infoQuests, getQuests } = useInfoQuests();
-  const { updateMainGuilds } = useInfoGuild();
+  // const { infoQuests, getQuests } = useInfoQuests();
+  // const { updateMainGuilds } = useInfoGuild();
 
   const updateStatus = (quests) => {
     const values = {
@@ -80,7 +80,7 @@ export const UserProvider = ({ children }) => {
 
   const history = useHistory();
 
-  const login = (data) => {
+  const login = (data, getQuests, infoQuests, updateMainGuilds) => {
     api
       .post("/sessions/", data)
       .then((response) => {

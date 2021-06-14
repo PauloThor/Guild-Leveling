@@ -29,7 +29,7 @@ const FormLogin = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const loginApp = (data) => {
-    login(data);
+    login(data, getQuests, infoQuests, updateMainGuilds);
     getQuests();
     updateStatus(infoQuests);
     updateMainGuilds();
@@ -42,7 +42,7 @@ const FormLogin = () => {
     <Container>
       <div className="form">
         <img src={RPG} alt="" />
-        <form onSubmit={handleSubmit(login)}>
+        <form onSubmit={handleSubmit(loginApp)}>
           <h2>Welcome aboard, sailor! 🌊</h2>
 
           <TextField
