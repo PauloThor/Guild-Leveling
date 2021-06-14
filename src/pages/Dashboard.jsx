@@ -1,9 +1,4 @@
-import ResumeUser from "../components/ResumeUser";
 import QuestList from "../components/QuestList";
-import { useInfoUser } from "../provider/user";
-import { Redirect } from "react-router";
-import { useInfoQuests } from "../provider/quests";
-import { useEffect } from "react";
 
 const Dashboard = () => {
   // const {
@@ -13,7 +8,11 @@ const Dashboard = () => {
   // if (!authenticated) {
   //   return <Redirect to="/login" />;
   // }
-  return <QuestList />;
+  return (
+    <div>
+      <QuestList />;
+    </div>
+  );
 };
 
 export default Dashboard;

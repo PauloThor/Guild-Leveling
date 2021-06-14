@@ -22,7 +22,8 @@ export default createGlobalStyle`
             circle,
             rgba(90, 64, 84, 1) 10%,
             rgba(5, 3, 3, 1) 93%
-        )
+        );
+        --font: 'MedievalSharp', cursive;
     }
 
     body, div, h1, h2, h3, h4, h5, h6 {

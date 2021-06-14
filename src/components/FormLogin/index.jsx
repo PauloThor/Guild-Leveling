@@ -6,9 +6,11 @@ import { Container } from "./styles";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useInfoUser } from "../../provider/user";
+import { useInfoQuests } from "../../provider/quests";
 
 const FormLogin = () => {
-  const { login } = useInfoUser();
+  const { login, updateStatus } = useInfoUser();
+  const { infoQuests, getQuests } = useInfoQuests();
   const schema = yup.object().shape({
     username: yup.string().required("Required field"),
     password: yup
@@ -25,6 +27,8 @@ const FormLogin = () => {
 
   const loginApp = (data) => {
     login(data);
+    getQuests();
+    updateStatus(infoQuests);
   };
 
   return (
