@@ -80,7 +80,7 @@ export const UserProvider = ({ children }) => {
 
   const history = useHistory();
 
-  const login = (data, getQuests, infoQuests, updateMainGuilds) => {
+  const login = (data) => {
     api
       .post("/sessions/", data)
       .then((response) => {
@@ -88,11 +88,7 @@ export const UserProvider = ({ children }) => {
         const { user_id } = jwt_decode(access);
 
         setInfoUser({ ...infoUser, access, id: user_id, authenticated: true });
-        updateStatus(infoQuests);
-        getQuests();
-        updateStatus(infoQuests);
-        updateMainGuilds();
-        localStorage.clear();
+         localStorage.clear();
         localStorage.setItem("@token", JSON.stringify(access));
         localStorage.setItem("@auth", true);
         localStorage.setItem("@id", user_id);

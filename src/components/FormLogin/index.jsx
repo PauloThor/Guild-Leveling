@@ -42,7 +42,7 @@ const FormLogin = () => {
     <Container>
       <div className="form">
         <img src={RPG} alt="" />
-        <form onSubmit={handleSubmit(loginApp)}>
+        <form onSubmit={handleSubmit(login)}>
           <h2>Welcome aboard, sailor! 🌊</h2>
 
           <TextField
