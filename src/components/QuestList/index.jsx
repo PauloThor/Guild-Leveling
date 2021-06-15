@@ -53,61 +53,7 @@ const QuestList = () => {
 
   return (
     <>
-      {/* <h2>Quests</h2>
-
-      <form onSubmit={handleSubmit(addQuest)}>
-        <TextField
-          fullWidth
-          helperText={errors.title?.message}
-          {...register("title")}
-          label="Título"
-          name="title"
-        />
-
-        <TextField
-          fullWidth
-          helperText={errors.category?.message}
-          {...register("category")}
-          name="category"
-          label="Categoria"
-        />
-
-        <TextField
-          fullWidth
-          helperText={errors.difficulty?.message}
-          {...register("difficulty")}
-          name="difficulty"
-          label="Dificuldade"
-        />
-
-        <TextField
-          fullWidth
-          helperText={errors.frequency?.message}
-          {...register("frequency")}
-          name="frequency"
-          label="Frequencia"
-        />
-
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          disableElevation
-        >
-          Cadastrar
-        </Button>
-      </form> */}
       <div>
-        {infoQuests.length > 0 &&
-          infoQuests.map((quest, index) => (
-            <div key={index}>
-              <h3>{quest.title}</h3>
-              <p>Categoria: {quest.category}</p>
-              <p>Dificuldade: {quest.difficulty}</p>
-              <p>Frequencia: {quest.frequency}</p>
-              <button onClick={() => removeQuest(quest.id)}>Remover</button>
-            </div>
-          ))}
         <div style={{ display: "flex" }}>
           <RankQuests />
           <DailyQuests />
