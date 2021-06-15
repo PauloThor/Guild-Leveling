@@ -6,18 +6,16 @@ import Dashboard from "./pages/Dashboard";
 import GuildSelect from "./pages/GuildSelect";
 import GuildDashboard from "./pages/GuildDashboard";
 import Header from "./components/Header";
-import Nav from './components/Navigation/Nav';
+import Nav from "./components/Navigation/Nav";
 import Section from "./components/Section";
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        
         <Signup />
       </Route>
       <Route exact path="/login">
-        
         <Login />
       </Route>
       <Header>

@@ -26,7 +26,7 @@ const appearFromLeft = keyframes`
 
 export const Container = styled.div`
   display: flex;
-  height: 93vh;
+  height: 100vh;
   background: var(--bg-gradient);
 
   div.left-container {

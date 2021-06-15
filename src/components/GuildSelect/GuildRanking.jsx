@@ -30,13 +30,12 @@ const GuildRanking = () => {
   const [sortedByMembers, setSortedByMembers] = useState([]);
   const [value, setValue] = useState("name");
   const [active, setActive] = useState("Scavenger Guild");
-  const handleClick = (name) => {
-    // const index = parseInt(e.target.id, 0);
-    if (name !== active) {
-      setActive(name);
+  const handleClick = (e) => {
+    const index = parseInt(e.target.id, 0);
+    if (index !== active) {
+      setActive(index);
     }
     handleUpdate();
-    console.log(name);
   };
 
   const [selectedId, setSelectedId] = useState(null);
@@ -48,12 +47,6 @@ const GuildRanking = () => {
 
   const handleUpdate = () => {
     updateMainGuilds();
-    setSortedGuilds([
-      mainGuilds["Hunters Guild"],
-      mainGuilds["Scavenger Guild"],
-      mainGuilds["Fame Guild"],
-      mainGuilds["Ahjin Guild"],
-    ]);
   };
 
   const sortByMembers = () => {
@@ -86,38 +79,22 @@ const GuildRanking = () => {
         <button onClick={sortByName}>Sortear por nome</button>
         <button onClick={sortByMembers}>Sortear por membros</button>
       </div>
-      {sortedByName.length > 0 &&
+      {/* {sortedByName.length > 0 &&
         value === "name" &&
         sortedByName.map((guild) => <p>{guild?.name}</p>)}
       {value === "members" &&
-        sortedByMembers.map((guild) => <p>{guild?.name}</p>)}
+        sortedByMembers.map((guild) => <p>{guild?.name}</p>)} */}
       <Tabs>
-        <Tab
-          onClick={() => handleClick("Scavenger Guild")}
-          active={active === "Scavenger Guild"}
-          id={0}
-        >
+        <Tab onClick={(e) => handleClick(e)} active={active === 0} id={0}>
           Scavenger Guild
         </Tab>
-        <Tab
-          onClick={() => handleClick("Hunters Guild")}
-          active={active === "Hunters Guild"}
-          id={1}
-        >
+        <Tab onClick={(e) => handleClick(e)} active={active === 1} id={1}>
           Hunters Guild
         </Tab>
-        <Tab
-          onClick={() => handleClick("Fame Guild")}
-          active={active === "Fame Guild"}
-          id={2}
-        >
+        <Tab onClick={(e) => handleClick(e)} active={active === 2} id={2}>
           Fame Guild
         </Tab>
-        <Tab
-          onClick={() => handleClick("Ahjin Guild")}
-          active={active === "Ahjin Guild"}
-          id={3}
-        >
+        <Tab onClick={(e) => handleClick(e)} active={active === 3} id={3}>
           Ahjin Guild
         </Tab>
       </Tabs>
@@ -138,20 +115,9 @@ const GuildRanking = () => {
             <img src={Guild1Logo} alt="scavenger" />
           </SecondGuildContainer>
         </Content>
-
-        {sortedGuilds.length > 0 &&
-          sortedGuilds?.map((guild) => (
-            <Content active={active === guild.name}>
-              <GuildInfo
-                name={guild.name}
-                id={guild.id}
-                creator={guild.creator}
-                members={guild.users_on_group}
-                description={guild.description}
-              />
-            </Content>
-          ))}
-        {/* <Content active={active === mainGuilds[0].name}>Teste</Content> */}
+        <Content active={active === 1}>Content2</Content>
+        <Content active={active === 2}>Content3</Content>
+        <Content active={active === 3}>Content4</Content>
       </>
     </div>
   );
