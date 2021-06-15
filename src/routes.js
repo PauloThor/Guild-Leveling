@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import Styleguide from "./Styleguide";
 import Dashboard from "./pages/Dashboard";
 import GuildSelect from "./pages/GuildSelect";
+import GuildDashboard from "./pages/GuildDashboard";
 
 const Routes = () => {
   return (
@@ -23,6 +24,9 @@ const Routes = () => {
       </Route>
       <Route path="/guildselect">
         <GuildSelect />
+      </Route>
+      <Route path="/guildboard">
+        <GuildDashboard />
       </Route>
     </Switch>
   );
