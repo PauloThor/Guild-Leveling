@@ -1,14 +1,14 @@
 import { UserProvider } from "./user";
 import { GuildProvider } from "./guild";
 import { QuestsProvider } from "./quests";
-import { TasksGuildContext } from "./tasksguilds";
+import { TasksGuildProvider } from "./tasksguilds";
 
 const Provider = ({ children }) => {
   return (
     <UserProvider>
       <QuestsProvider>
         <GuildProvider>
-          <TasksGuildContext>{children}</TasksGuildContext>
+          <TasksGuildProvider>{children}</TasksGuildProvider>
         </GuildProvider>
       </QuestsProvider>
     </UserProvider>
