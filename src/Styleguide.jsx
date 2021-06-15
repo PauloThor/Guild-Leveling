@@ -16,7 +16,7 @@ const Styleguide = () => {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "200px" }}>
       {/* {DataQuests.A.map((quest, i) => (
         <Quest name={quest.title} rank={quest.difficulty} />
       ))} */}

@@ -33,10 +33,10 @@ const FormLogin = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const loginApp = (data) => {
-    login(data);
-    getQuests();
-    updateStatus(infoQuests);
-    updateMainGuilds();
+    login(data, getQuests, infoQuests, updateMainGuilds);
+    // getQuests();
+    // updateStatus(infoQuests);
+    // updateMainGuilds();
   };
   const handleVisibility = () => {
     inputType === "password" ? setInputType("text") : setInputType("password");

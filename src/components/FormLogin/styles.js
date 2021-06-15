@@ -17,7 +17,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 93vh;
+  height: 100vh;
   background: var(--bg-gradient);
   background: var(--gradient-brown-dark);
 

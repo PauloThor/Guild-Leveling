@@ -22,8 +22,8 @@ export const UserProvider = ({ children }) => {
     username: "",
     guilds: [],
   });
-  const { infoQuests, getQuests } = useInfoQuests();
-  const { updateMainGuilds } = useInfoGuild();
+  // const { infoQuests, getQuests } = useInfoQuests();
+  // const { updateMainGuilds } = useInfoGuild();
 
   const updateStatus = (quests) => {
     const values = {
