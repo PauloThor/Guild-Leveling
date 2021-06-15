@@ -1,5 +1,5 @@
 import QuestList from "../components/QuestList";
-
+import GuildInfo from "../components/GuildInfo";
 const Dashboard = () => {
   // const {
   //   infoUser: { authenticated },
@@ -11,6 +11,7 @@ const Dashboard = () => {
   return (
     <div>
       <QuestList />;
+      <GuildInfo />
     </div>
   );
 };

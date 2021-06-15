@@ -4,6 +4,7 @@ import Signup from "./pages/Signup";
 import Styleguide from "./Styleguide";
 import Dashboard from "./pages/Dashboard";
 import GuildSelect from "./pages/GuildSelect";
+import GuildDashboard from "./pages/GuildDashboard";
 import Header from "./components/Header";
 import Nav from './components/Navigation/Nav';
 import Section from "./components/Section";
@@ -31,6 +32,9 @@ const Routes = () => {
       </Header>
       <Route path="/guildselect">
         <GuildSelect />
+      </Route>
+      <Route path="/guildboard">
+        <GuildDashboard />
       </Route>
     </Switch>
   );
