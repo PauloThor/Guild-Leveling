@@ -23,11 +23,6 @@ export const GuildProvider = ({ children }) => {
       .then((response) => setInfoGuilds(response.data.results));
   };
 
-  //Pega uma guilda especifica com a id da msms;
-  const getSpecificGuild = (id) => {
-    return api.get(`/groups/${id}/`).then((response) => response.data);
-  };
-
   //Inserir o user na guild passando
   const joinGuild = (id, access) => {
     console.log(access);
@@ -63,16 +58,16 @@ export const GuildProvider = ({ children }) => {
   // useState(JSON.parse(localStorage.getItem("@habits:token"))) || "";
   // const [userGuilds, setUserGuilds] = useState([]);
 
-  //Pega as guilds que o user está, so precisa do token do user
-  // const getUserGuilds = () => {
-  //   api
-  //     .get("/groups/subscriptions/", {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((response) => setUserGuilds(response.data));
-  // };
+  // Pega as guilds que o user está, so precisa do token do user
+  const getUserGuilds = () => {
+    api
+      .get("/groups/subscriptions/", {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      })
+      .then((response) => setInfoGuild(response.data));
+  };
 
   //Criando uma guild, so precisa do token do user
   // const createGuild = (data) => {
@@ -99,9 +94,9 @@ export const GuildProvider = ({ children }) => {
         infoGuilds,
         searchGuilds,
         joinGuild,
-        getSpecificGuild,
         mainGuilds,
         updateMainGuilds,
+        getUserGuilds,
       }}
     >
       {children}

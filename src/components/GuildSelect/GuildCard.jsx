@@ -82,7 +82,6 @@ const GuildCard = ({ id, name, description, access, members }) => {
   };
 
   const handleJoin = () => {
-    console.log(id);
     joinGuild(id, access);
     history.push("/login");
   };

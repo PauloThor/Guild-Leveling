@@ -30,9 +30,9 @@ const FormLogin = () => {
 
   const loginApp = (data) => {
     login(data, getQuests, infoQuests, updateMainGuilds);
-    getQuests();
-    updateStatus(infoQuests);
-    updateMainGuilds();
+    // getQuests();
+    // updateStatus(infoQuests);
+    // updateMainGuilds();
   };
   const handleVisibility = () => {
     inputType === "password" ? setInputType("text") : setInputType("password");
