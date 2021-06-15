@@ -70,15 +70,21 @@ const useStyles = makeStyles({
     left: "50%",
     transform: "translate(-50%, -50%)",
     textAlign: "center",
-    backgroundColor: "white",
-    padding: "10px",
+    background: "var(--gradient-brown-dark)",
+    padding: "20px",
     borderRadius: "10px",
+    color: "white",
+    border: "1px solid var(--darkblue)",
   },
   container: {
     border: "2px solid green",
   },
   btn: {
     marginRight: "10px",
+  },
+  yesBtn: {
+    color: "white",
+    borderColor: "white",
   },
 });
 
@@ -165,6 +171,7 @@ const Quest = ({ name, rank, quest, type, id }) => {
             <Button
               variant="outlined"
               onClick={type === "ranked" ? handleRemove : handleRemoveDaily}
+              className={classes.yesBtn}
             >
               Yes
             </Button>

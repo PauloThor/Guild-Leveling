@@ -88,10 +88,7 @@ export const UserProvider = ({ children }) => {
         const { user_id } = jwt_decode(access);
 
         setInfoUser({ ...infoUser, access, id: user_id, authenticated: true });
-        updateStatus(infoQuests);
-        getQuests();
-        updateStatus(infoQuests);
-        updateMainGuilds();
+
         localStorage.clear();
         localStorage.setItem("@token", JSON.stringify(access));
         localStorage.setItem("@auth", true);

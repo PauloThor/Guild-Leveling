@@ -6,10 +6,14 @@ import { useInfoQuests } from "../../provider/quests";
 import { useInfoGuild } from "../../provider/guild";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Container } from "./styles";
+import { Container, LogoImg } from "./styles";
 import { useState } from "react";
 import RPG from "../../assets/rpg.png";
 import * as yup from "yup";
+
+import Logo from "../../assets/logo.png";
+import LogoGray from "../../assets/logo-gray.png";
+import LogoRed from "../../assets/logo-red.png";
 
 const FormLogin = () => {
   const { login, updateStatus } = useInfoUser();
@@ -40,6 +44,8 @@ const FormLogin = () => {
 
   return (
     <Container>
+      <LogoImg src={LogoRed} alt="logo" />
+
       <div className="form">
         <img src={RPG} alt="" />
         <form onSubmit={handleSubmit(login)}>

@@ -1,16 +1,18 @@
+import { useEffect } from "react";
 import QuestList from "../components/QuestList";
+import { useInfoGuild } from "../provider/guild";
 
 const Dashboard = () => {
-  // const {
-  //   infoUser: { authenticated },
-  // } = useInfoUser();
+  const { updateMainGuilds } = useInfoGuild();
 
-  // if (!authenticated) {
-  //   return <Redirect to="/login" />;
-  // }
+  useEffect(() => {
+    updateMainGuilds();
+    // get quests
+  }, []);
+
   return (
     <div>
-      <QuestList />;
+      <QuestList />
     </div>
   );
 };

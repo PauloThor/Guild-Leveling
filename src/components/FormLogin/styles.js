@@ -19,6 +19,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 93vh;
   background: var(--bg-gradient);
+  background: var(--gradient-brown-dark);
 
   div.form {
     height: 504px;
@@ -135,5 +136,16 @@ export const Container = styled.div`
         font-size: 15px;
       }
     }
+  }
+`;
+
+export const LogoImg = styled.img`
+  width: 500px !important;
+  height: 500px !important;
+  margin-top: 69px;
+
+  @media (max-width: 800px) {
+    display: none !important;
+    width: 50px;
   }
 `;
