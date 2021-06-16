@@ -85,7 +85,13 @@ export const UserProvider = ({ children }) => {
         const { access } = response.data;
         const { user_id } = jwt_decode(access);
 
-        setInfoUser({ ...infoUser, access, id: user_id, authenticated: true });
+        setInfoUser({
+          ...infoUser,
+          access,
+          id: user_id,
+          authenticated: true,
+          username: data.username,
+        });
 
         localStorage.clear();
         localStorage.setItem("@token", JSON.stringify(access));
