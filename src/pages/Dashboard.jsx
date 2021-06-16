@@ -1,13 +1,7 @@
 import { useEffect } from "react";
 import QuestList from "../components/QuestList";
 import { useInfoGuild } from "../provider/guild";
-
-import GuildInfo from "../components/GuildInfo";
-import DailyQuests from "../components/QuestList/DailyQuests";
 import { useInfoQuests } from "../provider/quests";
-import { Grid } from "@material-ui/core";
-import Section from "../components/Section";
-import { QuestsContainer } from "../components/QuestList/styles";
 import styled from "styled-components";
 import {
   GuildDetailsContainer,
@@ -16,6 +10,7 @@ import {
 import Header from "../components/Header";
 import Nav from "../components/Navigation/Nav";
 import { useInfoUser } from "../provider/user";
+import GuildInfo from "../components/GuildSelect/GuildInfo";
 
 const Container = styled.div`
   background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
@@ -69,8 +64,8 @@ const Dashboard = () => {
             </section>
             <section>
               <ProfileContainer />
-              {/* <GuildInfo /> */}
-              <GuildDetailsContainer />
+              <GuildInfo />
+              {/* <GuildDetailsContainer /> */}
             </section>
           </DashboardContainer>
         </Nav>

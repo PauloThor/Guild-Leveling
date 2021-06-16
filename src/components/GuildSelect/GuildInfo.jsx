@@ -5,24 +5,46 @@ import Guild1Logo from "../../assets/guild1.png";
 import Guild2Logo from "../../assets/guild2.png";
 import Guild3Logo from "../../assets/guild3.png";
 import Guild4Logo from "../../assets/guild4.png";
-import { Modal } from "@material-ui/core";
+import { Button, Modal } from "@material-ui/core";
 import { useState } from "react";
-import { GuildButton } from "./styles";
 import { useHistory } from "react-router-dom";
+import { GuildDetailsContainer } from "../StyledComponents";
+import { useInfoUser } from "../../provider/user";
+import { useEffect } from "react";
 
-const CardContainer = styled.div`
-  width: 100%;
-  margin: 1rem;
+const Col = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--font);
+  padding: 0 5px;
 
+  p,
   h3 {
     background: var(--gradient-brown-dark);
-    border: 1px solid var(--brown);
+    padding: 1rem;
     border-radius: 15px;
+    border: 1px solid var(--brown);
+    font-family: var(--font);
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+
+  label {
+    color: orange;
+    font-family: var(--font);
+  }
+
+  h3 {
+    margin: 1rem 0;
+    font-size: 1.3rem;
   }
 `;
 
-const GuildInfo = ({ id, name, description, access, members, creator }) => {
-  const { joinGuild } = useInfoGuild();
+const GuildInfo = () => {
+  const { joinGuild, infoGuild, getUserGuilds } = useInfoGuild();
+  const { id, name, creator, users_on_group } = infoGuild;
 
   const SelectedLogo = {
     "Scavenger Guild": Guild1Logo,
@@ -33,19 +55,25 @@ const GuildInfo = ({ id, name, description, access, members, creator }) => {
 
   const history = useHistory();
 
-  const handleJoin = () => {
-    console.log(id);
-    joinGuild(id, access);
-    history.push("/login");
-  };
+  useEffect(() => {
+    getUserGuilds();
+    console.log(infoGuild);
+  }, []);
 
   return (
     <>
-      <CardContainer>
-        <h3>Guild Master: {creator}</h3>
-        <img src={SelectedLogo[name]} alt={name} />
-        <GuildButton onClick={handleJoin}>ENTER GUILD</GuildButton>
-      </CardContainer>
+      <GuildDetailsContainer>
+        <Col>
+          <h3>{name}</h3>
+          <p>
+            Guild Master: <label>{creator?.username}</label>
+          </p>
+          <p>Members: {users_on_group?.length}</p>
+        </Col>
+        <Col>
+          <img src={SelectedLogo[name]} alt={name} />
+        </Col>
+      </GuildDetailsContainer>
     </>
   );
 };

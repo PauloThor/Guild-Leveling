@@ -147,7 +147,7 @@ export const UserProvider = ({ children }) => {
         login,
         setAuthenticated,
         updateStatus,
-        login,
+        logout,
       }}
     >
       {children}

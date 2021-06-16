@@ -5,7 +5,7 @@ const GuildContext = createContext([]);
 
 export const GuildProvider = ({ children }) => {
   const [infoGuilds, setInfoGuilds] = useState([]);
-  const [infoGuild, setInfoGuild] = useState([]);
+  const [infoGuild, setInfoGuild] = useState({});
   const [mainGuilds, setMainGuilds] = useState({
     "Scavenger Guild": [],
     "Hunters Guild": [],
@@ -66,7 +66,9 @@ export const GuildProvider = ({ children }) => {
           Authorization: `Bearer ${access}`,
         },
       })
-      .then((response) => setInfoGuild(response.data));
+      .then((response) =>
+        setInfoGuild(response.data[response.data.length - 1])
+      );
   };
 
   //Criando uma guild, so precisa do token do user
