@@ -12,6 +12,8 @@ export const QuestsProvider = ({ children }) => {
     infoQuests.filter((quest) => quest.achieved === false)
   );
 
+  const { updateStatus } = useInfoUser();
+
   const {
     infoUser: { access, id },
     infoUser,
@@ -24,7 +26,11 @@ export const QuestsProvider = ({ children }) => {
           Authorization: `Bearer ${access}`,
         },
       })
-      .then((response) => setInfoQuests(response.data));
+      .then((response) => {
+        setInfoQuests(response.data);
+        updateStatus(response.data);
+        console.log(response.data);
+      });
   };
 
   const addQuest = (data) => {

@@ -10,6 +10,7 @@ import {
 import Header from "../components/Header";
 import Nav from "../components/Navigation/Nav";
 import { useInfoUser } from "../provider/user";
+import GuildInfo from "../components/GuildSelect/GuildInfo";
 import ResumeUser from "../components/Profile";
 
 const Container = styled.div`
@@ -49,11 +50,6 @@ const Dashboard = () => {
     // eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    updateStatus(infoQuests);
-    // eslint-disable-next-line
-  }, [infoQuests]);
-
   return (
     <Container>
       <Header>
@@ -63,14 +59,13 @@ const Dashboard = () => {
               <QuestList />
             </section>
             <section>
-              <ProfileContainer />
-
-              <GuildDetailsContainer />
+              <ResumeUser user={infoUser} />
+              <GuildInfo />
+              {/* <GuildDetailsContainer /> */}
             </section>
           </DashboardContainer>
         </Nav>
       </Header>
-      <ResumeUser user={infoUser} />
     </Container>
   );
 };
