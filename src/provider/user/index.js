@@ -22,8 +22,6 @@ export const UserProvider = ({ children }) => {
     username: "",
     guilds: [],
   });
-  // const { infoQuests, getQuests } = useInfoQuests();
-  // const { updateMainGuilds } = useInfoGuild();
 
   const updateStatus = (quests) => {
     const values = {
@@ -128,9 +126,21 @@ export const UserProvider = ({ children }) => {
       .catch((err) => console.log(err, "Erro ao logar"));
   };
 
+  const logout = () => {
+    localStorage.clear();
+    history.push("/");
+  };
+
   return (
     <UserContext.Provider
-      value={{ infoUser, createAccount, login, setAuthenticated, updateStatus }}
+      value={{
+        infoUser,
+        createAccount,
+        login,
+        setAuthenticated,
+        updateStatus,
+        login,
+      }}
     >
       {children}
     </UserContext.Provider>
