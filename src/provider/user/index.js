@@ -10,6 +10,7 @@ const UserContext = createContext({});
 const token = JSON.parse(localStorage.getItem("@token")) || "";
 const auth = JSON.parse(localStorage.getItem("@auth")) || false;
 const identification = localStorage.getItem("@id") || "";
+const username = localStorage.getItem("@username") || "";
 
 export const UserProvider = ({ children }) => {
   const [infoUser, setInfoUser] = useState({
@@ -19,11 +20,9 @@ export const UserProvider = ({ children }) => {
     exp: 0,
     guildRank: "Novice",
     id: identification,
-    username: "",
+    username: username,
     guilds: [],
   });
-  // const { infoQuests, getQuests } = useInfoQuests();
-  // const { updateMainGuilds } = useInfoGuild();
 
   const updateStatus = (quests) => {
     const values = {
@@ -87,12 +86,19 @@ export const UserProvider = ({ children }) => {
         const { access } = response.data;
         const { user_id } = jwt_decode(access);
 
-        setInfoUser({ ...infoUser, access, id: user_id, authenticated: true });
+        setInfoUser({
+          ...infoUser,
+          access,
+          id: user_id,
+          authenticated: true,
+          username: data.username,
+        });
 
         localStorage.clear();
         localStorage.setItem("@token", JSON.stringify(access));
         localStorage.setItem("@auth", true);
         localStorage.setItem("@id", user_id);
+        localStorage.setItem("@username", data.username);
       })
       .then(() => {
         return history.push("/dashboard");
@@ -128,9 +134,21 @@ export const UserProvider = ({ children }) => {
       .catch((err) => console.log(err, "Erro ao logar"));
   };
 
+  const logout = () => {
+    localStorage.clear();
+    history.push("/");
+  };
+
   return (
     <UserContext.Provider
-      value={{ infoUser, createAccount, login, setAuthenticated, updateStatus }}
+      value={{
+        infoUser,
+        createAccount,
+        login,
+        setAuthenticated,
+        updateStatus,
+        login,
+      }}
     >
       {children}
     </UserContext.Provider>

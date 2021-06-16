@@ -17,9 +17,12 @@ export default createGlobalStyle`
 	    --green: #2ade2a;
         --darkblue: #094979;
         --brown: #5a4054;
+        --purple: #4830b0;
+        --darkpurple: #2c296d; 
         --gradient-blue-dark: radial-gradient(circle, var(--darkblue) 0%, var(--black) 84%);
         --gradient-brown-dark: radial-gradient(circle, var(--brown) 10%, var(--black) 93%);
         --bg-gradient: radial-gradient(circle, var(--darkblue) 0%, var(--black) 110%);
+        --gradient-purple-dark: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
         --font: 'MedievalSharp', cursive;
     }
 
@@ -46,8 +49,8 @@ export default createGlobalStyle`
     }
 
     div.App {
-        width: 100vw;
-        height: 100vh;
+        min-width: 100vw;
+        min-height: 100vh;
     }
 
     body {

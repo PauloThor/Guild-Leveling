@@ -81,11 +81,12 @@ export const Container = styled.div`
       transition: 0.25s;
       border-radius: 3px;
       border: none;
-      background: var(--blue);
+      background: var(--brown);
       color: var(--white);
       cursor: pointer;
       height: 40px;
       font-size: 18px;
+      border-radius: 10px;
     }
 
     input.button:hover {
