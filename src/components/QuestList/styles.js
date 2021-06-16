@@ -100,3 +100,20 @@ export const StyledInput = styled.input`
     text-align: center;
   }
 `;
+
+export const DisplayTitle = styled.div`
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient-purple-dark);
+  border: 1px solid var(--purple);
+  border-radius: 15px;
+  padding: 1rem;
+  font-family: var(--font);
+  font-size: 24px;
+  white-space: nowrap;
+  color: white;
+  width: 90%;
+  text-align: center;
+`;

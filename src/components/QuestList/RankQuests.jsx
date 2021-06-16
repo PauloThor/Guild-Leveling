@@ -6,6 +6,7 @@ import Quest from "../Quest";
 import {
   BlueDisplayButton,
   DisplayButton,
+  DisplayTitle,
   QuestsContainer,
   QuestsDisplay,
 } from "./styles";
@@ -66,6 +67,7 @@ const RankQuests = () => {
         Drop quests
       </BlueDisplayButton>
       <QuestsDisplay show={show}>
+        <DisplayTitle>Ranked Quests</DisplayTitle>
         <DisplayButton
           variant="contained"
           onClick={showQuests}

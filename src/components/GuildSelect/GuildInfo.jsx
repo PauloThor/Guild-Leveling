@@ -39,6 +39,8 @@ const Col = styled.div`
   h3 {
     margin: 1rem 0;
     font-size: 1.3rem;
+    background: var(--gradient-purple-dark);
+    border-color: var(--purple);
   }
 `;
 

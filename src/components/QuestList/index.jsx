@@ -39,8 +39,8 @@ const QuestList = () => {
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
-        <RankQuests />
         <DailyQuests />
+        <RankQuests />
       </div>
     </>
   );
