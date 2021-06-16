@@ -11,6 +11,7 @@ import Header from "../components/Header";
 import Nav from "../components/Navigation/Nav";
 import { useInfoUser } from "../provider/user";
 import GuildInfo from "../components/GuildSelect/GuildInfo";
+import ResumeUser from "../components/Profile";
 
 const Container = styled.div`
   background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
@@ -41,18 +42,13 @@ const DashboardContainer = styled.div`
 const Dashboard = () => {
   const { updateMainGuilds } = useInfoGuild();
   const { infoQuests, getQuests } = useInfoQuests();
-  const { updateStatus } = useInfoUser();
+  const { updateStatus, infoUser } = useInfoUser();
 
   useEffect(() => {
     updateMainGuilds();
     getQuests();
     // eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    updateStatus(infoQuests);
-    // eslint-disable-next-line
-  }, [infoQuests]);
 
   return (
     <Container>
@@ -63,7 +59,7 @@ const Dashboard = () => {
               <QuestList />
             </section>
             <section>
-              <ProfileContainer />
+              <ResumeUser user={infoUser} />
               <GuildInfo />
               {/* <GuildDetailsContainer /> */}
             </section>

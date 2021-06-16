@@ -136,7 +136,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.clear();
-    history.push("/");
+    history.push("/login");
   };
 
   return (
