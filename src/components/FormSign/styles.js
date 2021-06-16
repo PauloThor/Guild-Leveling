@@ -155,7 +155,7 @@ export const Container = styled.div`
         transition: 0.25s;
         border-radius: 10px;
         border: none;
-        background: var(--blue);
+        background: var(--darkblue);
         color: var(--white);
         cursor: pointer;
         width: 400px;
