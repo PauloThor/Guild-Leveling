@@ -15,6 +15,7 @@ import {
 } from "../components/StyledComponents";
 import Header from "../components/Header";
 import Nav from "../components/Navigation/Nav";
+import { useInfoUser } from "../provider/user";
 
 const Container = styled.div`
   background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
@@ -44,12 +45,17 @@ const DashboardContainer = styled.div`
 
 const Dashboard = () => {
   const { updateMainGuilds } = useInfoGuild();
-  const { getQuests } = useInfoQuests();
+  const { infoQuests, getQuests } = useInfoQuests();
+  const { updateStatus } = useInfoUser();
 
   useEffect(() => {
     updateMainGuilds();
     getQuests();
   }, []);
+
+  useEffect(() => {
+    updateStatus(infoQuests);
+  }, [infoQuests]);
 
   return (
     <Container>

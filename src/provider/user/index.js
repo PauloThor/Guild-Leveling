@@ -10,6 +10,7 @@ const UserContext = createContext({});
 const token = JSON.parse(localStorage.getItem("@token")) || "";
 const auth = JSON.parse(localStorage.getItem("@auth")) || false;
 const identification = localStorage.getItem("@id") || "";
+const username = localStorage.getItem("@username") || "";
 
 export const UserProvider = ({ children }) => {
   const [infoUser, setInfoUser] = useState({
@@ -19,7 +20,7 @@ export const UserProvider = ({ children }) => {
     exp: 0,
     guildRank: "Novice",
     id: identification,
-    username: "",
+    username: username,
     guilds: [],
   });
 
@@ -97,6 +98,7 @@ export const UserProvider = ({ children }) => {
         localStorage.setItem("@token", JSON.stringify(access));
         localStorage.setItem("@auth", true);
         localStorage.setItem("@id", user_id);
+        localStorage.setItem("@username", data.username);
       })
       .then(() => {
         return history.push("/dashboard");
