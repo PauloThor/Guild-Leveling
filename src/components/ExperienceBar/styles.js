@@ -28,6 +28,7 @@ export const ExperienceContainer = styled.div`
     background: var(--green);
     border-radius: 50px;
     animation: bar 2s ease;
+    transition: 1s;
   }
 
   @keyframes bar {

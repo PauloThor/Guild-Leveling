@@ -5,10 +5,11 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 520px;
-  height: 520px;
+  min-height: 494px;
   background: var(--gradient-blue-dark); //var(--gradient-blue-dark);
   border-radius: 20px;
   justify-content: center;
+  margin: 1rem auto;
 
   div.user-profile {
     display: flex;
