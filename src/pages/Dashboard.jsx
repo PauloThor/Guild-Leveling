@@ -51,10 +51,12 @@ const Dashboard = () => {
   useEffect(() => {
     updateMainGuilds();
     getQuests();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     updateStatus(infoQuests);
+    // eslint-disable-next-line
   }, [infoQuests]);
 
   return (
