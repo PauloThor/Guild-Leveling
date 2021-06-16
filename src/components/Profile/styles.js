@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   width: 520px;
   height: 520px;
-  background: var(--gradient-brown-dark);
+  background: var(--gradient-blue-dark); //var(--gradient-blue-dark);
   border-radius: 20px;
   justify-content: center;
 
@@ -18,7 +18,7 @@ export const Container = styled.div`
     flex-direction: column;
     border: 1px solid var(--brown);
     border-radius: 15px;
-    background: var(--gradient-blue-dark);
+    background: var(--gradient-brown-dark); // var(--gradient-brown-dark);
     color: white;
     margin: 10px;
     animation: 1s fromLeft;
@@ -36,7 +36,7 @@ export const Container = styled.div`
       }
 
       span:not(:last-child) {
-        background: var(--gradient-brown-dark);
+        background: var(--gradient-blue-dark); //var(--gradient-blue-dark);
         font-size: 18px;
         border-radius: 15px;
         padding: 5px 15px;
@@ -68,7 +68,7 @@ export const Container = styled.div`
 
     h2 {
       font-size: 18px;
-      background: var(--gradient-blue-dark);
+      background: var(--gradient-brown-dark); // var(--gradient-brown-dark);
       color: white;
       border-radius: 15px;
       padding: 3px 15px;
@@ -93,7 +93,7 @@ export const Container = styled.div`
         border: 1px solid var(--brown);
         border-radius: 15px;
         text-align: center;
-        background: var(--gradient-blue-dark);
+        background: var(--gradient-brown-dark); // var(--gradient-brown-dark);
         color: white;
         margin: 10px;
         padding: 10px;
@@ -101,7 +101,7 @@ export const Container = styled.div`
         animation: 1s fromLeft;
 
         h3 {
-          background: var(--gradient-brown-dark);
+          background: var(--gradient-blue-dark); //var(--gradient-blue-dark);
           padding: 5px;
           font-size: 1rem;
           font-family: var(--font);
