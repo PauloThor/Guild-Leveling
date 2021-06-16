@@ -34,32 +34,13 @@ const QuestList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   const currentLevel = infoUser.level;
-  //   updateStatus(infoQuests);
-
-  //   if (infoUser.level !== currentLevel) {
-  //     getCurrentQuests();
-  //   }
-  //   console.log(infoUser);
-  //   // eslint-disable-next-line
-  // }, [infoUser, infoQuests]);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
-
   return (
     <>
-      <div>
-        <div style={{ display: "flex" }}>
-          <RankQuests />
-          <DailyQuests />
-        </div>
-        <button onClick={() => updateStatus(infoQuests)}>Testar status</button>
-        <button onClick={() => getCurrentQuests()}>Testar quests atuais</button>
+      <div
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      >
+        <RankQuests />
+        <DailyQuests />
       </div>
     </>
   );

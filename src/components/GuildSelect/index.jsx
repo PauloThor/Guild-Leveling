@@ -5,10 +5,6 @@ import { useInfoUser } from "../../provider/user";
 import { starterGuilds } from "../../database";
 import GuildCard from "./GuildCard";
 
-import Logo from "../../assets/logo.png";
-import LogoGray from "../../assets/logo-gray.png";
-import LogoWhite from "../../assets/logo-red.png";
-
 const GuildSelect = () => {
   const { searchGuilds, infoGuilds } = useInfoGuild();
   const {
@@ -36,9 +32,6 @@ const GuildSelect = () => {
             />
           </div>
         ))}
-      <img src={Logo} alt="logo" />
-      <img src={LogoGray} alt="logo" />
-      <img src={LogoWhite} alt="logo" />
     </Container>
   );
 };
