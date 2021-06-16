@@ -2,25 +2,25 @@ import styled from "styled-components";
 
 export const ExperienceContainer = styled.div`
   font-size: 16px;
-  width: 200px;
-  margin-top: 20px;
+  width: 100%;
+  margin: 5px auto;
 
   span {
-    z-index: -1;
     position: relative;
     display: inline-block;
     width: 100%;
-    height: 25px;
+    height: 27px;
     background: var(--darkgray);
     border-radius: 50px;
-    color: var(--white);
+    color: var(--black);
     text-align: center;
+    font-size: 14px;
   }
 
   span:before {
     position: absolute;
     content: "${({ experience }) => `${experience}%`}";
-    top: 4.3px;
+    top: 4.5px;
     left: 4px;
     max-width: 95.5%;
     width: ${({ experience }) => `${experience}%`};
@@ -28,6 +28,7 @@ export const ExperienceContainer = styled.div`
     background: var(--green);
     border-radius: 50px;
     animation: bar 2s ease;
+    transition: 1s;
   }
 
   @keyframes bar {

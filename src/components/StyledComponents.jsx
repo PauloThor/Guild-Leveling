@@ -31,7 +31,7 @@ export const ProfileContainer = styled.div`
 `;
 
 export const GuildDetailsContainer = styled.div`
-  background: var(--gradient-brown-dark);
+  background: var(--gradient-blue-dark);
   width: 320px;
   min-height: 280px;
   border-radius: 15px;
@@ -39,10 +39,18 @@ export const GuildDetailsContainer = styled.div`
   margin: 10px auto;
   position: relative;
   animation: vanish 1s;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
   span {
     font-family: var(--font);
     font-size: 1.2rem;
+  }
+
+  img {
+    width: 100px;
   }
 
   @keyframes vanish {
@@ -56,6 +64,12 @@ export const GuildDetailsContainer = styled.div`
 
   @media (min-width: 780px) {
     width: 520px;
-    margin: 0.5rem;
+    margin: 15px 0.5rem;
+    justify-content: space-between;
+
+    img {
+      height: 250px;
+      width: 180px;
+    }
   }
 `;
