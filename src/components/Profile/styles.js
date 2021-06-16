@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 520px;
-  height: 500px;
+  height: 520px;
   background: var(--gradient-brown-dark);
   border-radius: 20px;
   justify-content: center;
@@ -21,8 +21,8 @@ export const Container = styled.div`
     background: var(--gradient-blue-dark);
     color: white;
     margin: 10px;
-    font-family: var(--font);
     animation: 1s fromLeft;
+    height: 240px;
 
     div.info {
       display: flex;
@@ -31,6 +31,22 @@ export const Container = styled.div`
 
       span {
         margin: 5px 0;
+        font-family: var(--font);
+        font-size: 16px;
+      }
+
+      span:not(:last-child) {
+        background: var(--gradient-brown-dark);
+        font-size: 18px;
+        border-radius: 15px;
+        padding: 5px 15px;
+      }
+
+      span.lvl,
+      span.name {
+        background: initial;
+        color: red;
+        padding: 0;
       }
     }
 
@@ -49,6 +65,14 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     height: 259px;
+
+    h2 {
+      font-size: 18px;
+      background: var(--gradient-blue-dark);
+      color: white;
+      border-radius: 15px;
+      padding: 3px 15px;
+    }
 
     ul {
       margin: 0;
@@ -79,7 +103,7 @@ export const Container = styled.div`
         h3 {
           background: var(--gradient-brown-dark);
           padding: 5px;
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-family: var(--font);
           display: flex;
           align-items: center;

@@ -11,6 +11,11 @@ export const QuestsContainer = styled.div`
   position: relative;
   animation: vanish 1s;
 
+  span {
+    font-family: var(--font);
+    font-size: 1.2rem;
+  }
+
   @keyframes vanish {
     from {
       opacity: 0;

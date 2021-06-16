@@ -10,7 +10,10 @@ const QuestsCard = () => {
           <div className="quest">
             <li key={index}>
               <h3>{quest.title}</h3>
-              <span>Rank: {quest.difficulty}</span>
+              <span>
+                Rank: <span className="rank"></span>
+                {quest.difficulty}
+              </span>
             </li>
           </div>
         );

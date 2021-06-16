@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ExperienceContainer = styled.div`
   font-size: 16px;
-  width: 180px;
+  width: 100%;
   margin: 5px auto;
 
   span {
@@ -19,7 +19,7 @@ export const ExperienceContainer = styled.div`
 
   span:before {
     position: absolute;
-    content: "XP: ${({ experience }) => `${experience}%`}";
+    content: "${({ experience }) => `${experience}%`}";
     top: 4.5px;
     left: 4px;
     max-width: 95.5%;

@@ -8,6 +8,8 @@ import GuildDashboard from "./pages/GuildDashboard";
 import Header from "./components/Header";
 import Nav from "./components/Navigation/Nav";
 import Section from "./components/Section";
+import PageNotFound from "./pages/PageNotFound";
+import Shop from "./components/Shop";
 
 const Routes = () => {
   return (
@@ -18,22 +20,22 @@ const Routes = () => {
       <Route exact path="/login">
         <Login />
       </Route>
-      <Header>
-        <Nav>
-          <Route exact path="/styleguide" component={Styleguide} />
-          <Route exact path="/dashboard">
-            <Section>
-              <Dashboard />
-            </Section>
-          </Route>
-        </Nav>
-      </Header>
-      <Route path="/guildselect">
+      <Route exact path="/guildselect">
         <GuildSelect />
       </Route>
       <Route path="/guildboard">
         <GuildDashboard />
       </Route>
+      <Route exact path="/styleguide" component={Styleguide} />
+      <Route exact path="/dashboard">
+        {/* <Header> */}
+        {/* <Nav> */}
+        <Dashboard />
+        {/* </Nav> */}
+        {/* </Header> */}
+      </Route>
+      <Route exact path="/shop" component={Shop} />
+      <Route path={"*"} component={PageNotFound} />
     </Switch>
   );
 };
