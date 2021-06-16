@@ -54,7 +54,7 @@ export const GuildButton = styled.button`
 
 export const Tabs = styled.div`
   overflow: hidden;
-  background: #fff;
+  background: #22222d;
   font-family: Open Sans;
   height: 3em;
   display: flex;
@@ -66,13 +66,17 @@ export const Tab = styled.button`
   outline: none;
   cursor: pointer;
   width: 24%;
+  padding: 0;
+  border-radius: 5px;
   position: relative;
+  background: var(--gradient-brown-dark);
+  color: #fff;
 
   margin-right: 0.1em;
-  font-size: 1em;
+  font-size: 0.9em;
   border: ${(props) => (props.active ? "1px solid #ccc" : "")};
   border-bottom: ${(props) => (props.active ? "none" : "")};
-  background-color: ${(props) => (props.active ? "white" : "lightgray")};
+  /* background-color: ${(props) => (props.active ? "white" : "lightgray")}; */
   height: ${(props) => (props.active ? "3em" : "2.6em; top:.4em")};
   transition: background-color 0.5s ease-in-out;
 
@@ -93,10 +97,24 @@ export const GuildContainer = styled.div`
   width: 50%;
   display: flex;
   justify-content: center;
+  font-family: var(--font);
+  color: var(--white);
+  font-family: var(--font);
+  h3 {
+    font-family: var(--font);
+  }
+  p {
+    font-family: var(--font);
+    color: var(--white);
+  }
 `;
 
 export const SecondGuildContainer = styled(GuildContainer)`
   border-right: 1px solid var(--dark);
+
+  img {
+    height: 100px;
+  }
 `;
 
 export const GuildTitle = styled.h3`

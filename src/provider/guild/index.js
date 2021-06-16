@@ -51,7 +51,7 @@ export const GuildProvider = ({ children }) => {
     };
 
     setMainGuilds(newMainGuilds);
-    console.log(mainGuilds);
+    // console.log(mainGuilds);
   };
 
   // const [token] =

@@ -20,12 +20,12 @@ const Routes = () => {
       </Route>
       <Header>
         <Nav>
-          <Route exact path="/styleguide" component={Styleguide} />
-          <Route exact path="/dashboard">
-            <Section>
+          <Section>
+            <Route exact path="/styleguide" component={Styleguide} />
+            <Route exact path="/dashboard">
               <Dashboard />
-            </Section>
-          </Route>
+            </Route>
+          </Section>
         </Nav>
       </Header>
       <Route path="/guildselect">

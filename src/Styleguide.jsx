@@ -16,13 +16,14 @@ const Styleguide = () => {
   };
 
   return (
-    <div style={{ marginTop: "200px" }}>
+    // <div style={{ marginTop: "200px" }}>
+    <div>
       {/* {DataQuests.A.map((quest, i) => (
         <Quest name={quest.title} rank={quest.difficulty} />
       ))} */}
-      <button onClick={updateMainGuilds}>Atualizar</button>
-      <button onClick={handleShow}>Mostrar</button>
-      {show && <GuildRanking />}
+      {/* <button onClick={updateMainGuilds}>Atualizar</button>
+      <button onClick={handleShow}>Mostrar</button> */}
+      <GuildRanking />
     </div>
   );
 };

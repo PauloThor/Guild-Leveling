@@ -1,10 +1,10 @@
-// import GuildInfo from '../components/GuildInfo'
+import GuildRanking from "../components/GuildSelect/GuildRanking";
 import GuildQuests from "../components/GuildQuests";
 
 const GuildDashboard = () => {
   return (
-    // <GuildInfo />
-    <GuildQuests />
+    <GuildRanking />
+    // <GuildQuests />
   );
 };
 
