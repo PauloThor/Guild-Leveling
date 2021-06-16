@@ -28,9 +28,27 @@ export const Container = styled.div`
   display: flex;
   height: 100vh;
   background: var(--bg-gradient);
+  overflow: hidden;
 
   div.left-container {
     animation: ${appearFromLeft} 1.5s;
+    display: flex;
+    flex-direction: column;
+
+    div.description {
+      margin: 0 auto;
+      width: 50%;
+      position: relative;
+      top: -25%;
+      left: 40%;
+
+      h2 {
+        width: 80%;
+        padding: 10px;
+        border-radius: 15px;
+        color: #ffffff99;
+      }
+    }
   }
 
   div.right-container,
@@ -135,7 +153,7 @@ export const Container = styled.div`
 
       .button {
         transition: 0.25s;
-        border-radius: 3px;
+        border-radius: 10px;
         border: none;
         background: var(--blue);
         color: var(--white);
@@ -217,8 +235,7 @@ export const Container = styled.div`
       }
 
       input.button {
-        height: 30px;
-        font-size: 16px;
+        height: 40px;
       }
     }
   }
