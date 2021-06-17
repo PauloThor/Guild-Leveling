@@ -54,7 +54,7 @@ export const GuildButton = styled.button`
 
 export const Tabs = styled.div`
   overflow: hidden;
-  background: #22222d;
+  background: transparent;
   font-family: Open Sans;
   height: 3em;
   display: flex;
@@ -69,6 +69,7 @@ export const Tab = styled.button`
   padding: 0;
   border-radius: 5px;
   position: relative;
+  font-family: var(--font);
   background: var(--gradient-brown-dark);
   color: #fff;
 
@@ -76,7 +77,6 @@ export const Tab = styled.button`
   font-size: 0.9em;
   border: ${(props) => (props.active ? "1px solid #ccc" : "")};
   border-bottom: ${(props) => (props.active ? "none" : "")};
-  /* background-color: ${(props) => (props.active ? "white" : "lightgray")}; */
   height: ${(props) => (props.active ? "3em" : "2.6em; top:.4em")};
   transition: background-color 0.5s ease-in-out;
 
@@ -99,9 +99,37 @@ export const GuildContainer = styled.div`
   justify-content: center;
   font-family: var(--font);
   color: var(--white);
-  font-family: var(--font);
   h3 {
     font-family: var(--font);
+    margin-left: 130px;
+    @media (min-width: 780px) {
+      margin-left: 90.6px;
+      width: 21.5rem;
+    }
+  }
+  .gma {
+    margin-bottom: 85px;
+    max-width: 150px;
+    background: var(--gradient-brown-dark);
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid var(--brown);
+    font-family: var(--font);
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    @media (min-width: 780px) {
+      max-width: initial;
+      display: inline;
+    }
+  }
+
+  label {
+    font-family: var(--font);
+    color: orange;
+    display: inline-block;
+    margin-bottom: 100px;
+    margin-left: 130px;
+    font-weight: 700;
   }
   p {
     font-family: var(--font);
@@ -113,15 +141,28 @@ export const SecondGuildContainer = styled(GuildContainer)`
   border-right: 1px solid var(--dark);
 
   img {
-    height: 100px;
+    max-height: 100px;
+    min-height: 9rem;
+    @media (min-width: 650px) {
+      max-height: 250px;
+    }
+    @media (min-width: 860px) {
+      max-height: 400px;
+    }
   }
 `;
 
-export const GuildTitle = styled.h3`
+export const GuildTitle = styled.h4`
+  background: radial-gradient(circle, #5a40548c 20%, #050303a3 118%);
+  color: var(--white);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 3px;
+  width: 15.1rem;
   font-family: var(--font);
-  background: var(--gradient-brown-dark);
-  color: white;
-  margin: 5px;
-  border-radius: 15px;
-  padding: 10px;
+  margin-left: 130px;
+  @media (min-width: 780px) {
+    margin-left: 90.6px;
+    width: 21.5rem;
+  }
 `;
