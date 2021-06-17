@@ -53,7 +53,7 @@ export default createGlobalStyle`
         min-height: 100vh;
     }
 
-    body {
+    body, html {
         max-width: 100%;
         overflow-x: hidden;
     }
