@@ -29,7 +29,6 @@ export const QuestsProvider = ({ children }) => {
       .then((response) => {
         setInfoQuests(response.data);
         updateStatus(response.data);
-        console.log(response.data);
       });
   };
 

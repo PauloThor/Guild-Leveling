@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 import { useInfoQuests } from "../../provider/quests";
 import { useEffect } from "react";
+import { useInfoUser } from "../../provider/user";
+import { useHistory } from "react-router-dom";
 
 const SettingsContainer = styled.div`
   padding: 100px 0 0 40px;
@@ -119,13 +121,20 @@ const Col = styled.div`
   }
 `;
 
-const QuestsContainer = styled.div``;
-
 const Settings = () => {
   const { infoQuests, getQuests } = useInfoQuests();
 
+  const { infoUser } = useInfoUser();
+
+  const history = useHistory();
+
+  if (!infoUser.authenticated) {
+    history.push("/login");
+  }
+
   useEffect(() => {
     getQuests();
+    // eslint-disable-next-line
   }, []);
 
   return (

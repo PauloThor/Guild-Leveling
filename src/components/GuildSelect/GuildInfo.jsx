@@ -52,7 +52,7 @@ const GuildInfo = () => {
 
   useEffect(() => {
     getUserGuilds();
-    console.log(infoGuild);
+    // eslint-disable-next-line
   }, []);
 
   return (

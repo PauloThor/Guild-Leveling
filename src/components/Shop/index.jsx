@@ -7,6 +7,8 @@ import Expansion1 from "../../assets/expansion1.png";
 import Expansion2 from "../../assets/expansion2.png";
 import Expansion3 from "../../assets/expansion3.png";
 import { useState } from "react";
+import { useInfoUser } from "../../provider/user";
+import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
   min-width: 100vw;
@@ -174,6 +176,14 @@ const products = [
 const Shop = () => {
   const [cart, setCart] = useState([]);
   const [disabled, setDisabled] = useState([false, false, false]);
+
+  const { infoUser } = useInfoUser();
+
+  const history = useHistory();
+
+  if (!infoUser.authenticated) {
+    history.push("/login");
+  }
 
   const handleAdd = (index) => {
     setCart([...cart, products[index]]);

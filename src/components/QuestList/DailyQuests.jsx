@@ -1,11 +1,6 @@
-import { Button, TextField } from "@material-ui/core";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import Quest from "../Quest";
 import { useInfoQuests } from "../../provider/quests";
-import { useInfoUser } from "../../provider/user";
 
 import "./styles";
 import {

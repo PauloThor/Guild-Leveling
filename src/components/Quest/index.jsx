@@ -5,7 +5,6 @@ import styled from "styled-components";
 import SwordIcon from "../../assets/sword.png";
 import CircleIcon from "../../assets/circle.png";
 import { useInfoQuests } from "../../provider/quests";
-import { useEffect } from "react";
 
 const Container = styled.div`
   max-width: 300px;

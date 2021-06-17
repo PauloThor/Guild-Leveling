@@ -13,10 +13,6 @@ import { ContainerRanking } from "./styles";
 
 const GuildRanking = () => {
   const { updateMainGuilds, mainGuilds } = useInfoGuild();
-  const [sortedGuilds] = useState(mainGuilds);
-  const [sortedByName, setSortedByName] = useState([]);
-  const [sortedByMembers, setSortedByMembers] = useState([]);
-  const [value, setValue] = useState("name");
   const [active, setActive] = useState("Scavenger Guild");
   const handleClick = (e) => {
     const index = parseInt(e.target.id, 0);
@@ -35,36 +31,8 @@ const GuildRanking = () => {
     updateMainGuilds();
   };
 
-  const sortByMembers = () => {
-    handleUpdate();
-    if (sortedGuilds.length === 0) {
-      return;
-    }
-
-    const newSort = sortedGuilds.sort(
-      (a, b) => b.users_on_group.length - a.users_on_group.length
-    );
-    setSortedByMembers(newSort);
-    setValue("members");
-  };
-
-  const sortByName = () => {
-    handleUpdate();
-    if (sortedGuilds.length === 0) {
-      return;
-    }
-
-    const newSort = sortedGuilds.sort((a, b) => a.name[0] - b.name[0]);
-    setSortedByName(newSort);
-    setValue("name");
-  };
-
   return (
     <ContainerRanking>
-      <div>
-        <button onClick={sortByName}>Sortear por nome</button>
-        <button onClick={sortByMembers}>Sortear por membros</button>
-      </div>
       {/* {sortedByName.length > 0 &&
         value === "name" &&
         sortedByName.map((guild) => <p>{guild?.name}</p>)}

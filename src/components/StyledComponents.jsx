@@ -64,13 +64,17 @@ export const GuildDetailsContainer = styled.div`
 
   @media (min-width: 780px) {
     width: 520px;
-    margin: 15px 0.5rem;
+    margin: 15px auto;
     justify-content: space-between;
 
     img {
       height: 250px;
       width: 180px;
     }
+  }
+
+  @media (min-width: 1200px) {
+    margin: 15px 0.5rem;
   }
 `;
 
