@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   width: 520px;
   min-height: 494px;
-  background: var(--gradient-blue-dark); //var(--gradient-blue-dark);
+  background: var(--gradient-blue-dark);
   border-radius: 20px;
   justify-content: center;
   margin: 1rem auto;
@@ -19,11 +19,11 @@ export const Container = styled.div`
     flex-direction: column;
     border: 1px solid var(--brown);
     border-radius: 15px;
-    background: var(--gradient-brown-dark); // var(--gradient-brown-dark);
+    background: var(--gradient-brown-dark);
     color: white;
     margin: 10px;
     animation: 1s fromLeft;
-    height: 240px;
+    height: 100%;
 
     div.info {
       display: flex;
@@ -37,16 +37,18 @@ export const Container = styled.div`
       }
 
       span:not(:last-child) {
-        background: var(--gradient-blue-dark); //var(--gradient-blue-dark);
+        background: var(--gradient-blue-dark);
         font-size: 18px;
         border-radius: 15px;
         padding: 5px 15px;
       }
 
       span.lvl,
-      span.name {
+      span.name,
+      span.rank,
+      span.cash {
         background: initial;
-        color: red;
+        color: tomato;
         padding: 0;
       }
     }
@@ -69,7 +71,7 @@ export const Container = styled.div`
 
     h2 {
       font-size: 18px;
-      background: var(--gradient-brown-dark); // var(--gradient-brown-dark);
+      background: var(--gradient-brown-dark);
       color: white;
       border-radius: 15px;
       padding: 3px 15px;
@@ -94,7 +96,7 @@ export const Container = styled.div`
         border: 1px solid var(--brown);
         border-radius: 15px;
         text-align: center;
-        background: var(--gradient-brown-dark); // var(--gradient-brown-dark);
+        background: var(--gradient-brown-dark);
         color: white;
         margin: 10px;
         padding: 10px;
@@ -102,7 +104,7 @@ export const Container = styled.div`
         animation: 1s fromLeft;
 
         h3 {
-          background: var(--gradient-blue-dark); //var(--gradient-blue-dark);
+          background: var(--gradient-blue-dark);
           padding: 5px;
           font-size: 1rem;
           font-family: var(--font);
@@ -114,6 +116,44 @@ export const Container = styled.div`
 
         span {
           font-family: var(--font);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1246px) {
+    width: 658px;
+  }
+
+  @media (max-width: 779px) {
+    width: 320px;
+    padding: 10px 0;
+
+    div.user-profile {
+      width: 257.34px;
+    }
+
+    div.quests-container {
+      height: unset;
+      width: 100%;
+      min-width: 257.34px;
+
+      h2 {
+        width: 80%;
+        text-align: center;
+      }
+
+      ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        div.quest {
+          width: 80%;
+        }
+
+        div.quest:not(:last-child) {
+          margin-bottom: 0px;
         }
       }
     }

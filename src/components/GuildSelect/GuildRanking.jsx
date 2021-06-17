@@ -1,5 +1,4 @@
 import {
-  Container,
   Content,
   Tabs,
   Tab,
@@ -8,24 +7,13 @@ import {
   SecondGuildContainer,
 } from "./styles";
 import { useInfoGuild } from "../../provider/guild";
-import { useEffect, useState } from "react";
-import { useInfoUser } from "../../provider/user";
-import { starterGuilds } from "../../database";
-import GuildCard from "./GuildCard";
-
 import Guild1Logo from "../../assets/guild1.png";
-import Guild2Logo from "../../assets/guild2.png";
-import Guild3Logo from "../../assets/guild3.png";
-import Guild4Logo from "../../assets/guild4.png";
-import GuildInfo from "./GuildInfo";
+import { useEffect, useState } from "react";
+import { ContainerRanking } from "./styles";
 
 const GuildRanking = () => {
-  const { searchGuilds, infoGuilds, updateMainGuilds, mainGuilds } =
-    useInfoGuild();
-  const {
-    infoUser: { access },
-  } = useInfoUser();
-  const [sortedGuilds, setSortedGuilds] = useState(mainGuilds);
+  const { updateMainGuilds, mainGuilds } = useInfoGuild();
+  const [sortedGuilds] = useState(mainGuilds);
   const [sortedByName, setSortedByName] = useState([]);
   const [sortedByMembers, setSortedByMembers] = useState([]);
   const [value, setValue] = useState("name");
@@ -37,8 +25,6 @@ const GuildRanking = () => {
     }
     handleUpdate();
   };
-
-  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     handleUpdate();
@@ -74,7 +60,7 @@ const GuildRanking = () => {
   };
 
   return (
-    <div style={{ maxWidth: "1140px", margin: "0 auto" }}>
+    <ContainerRanking>
       <div>
         <button onClick={sortByName}>Sortear por nome</button>
         <button onClick={sortByMembers}>Sortear por membros</button>
@@ -119,7 +105,7 @@ const GuildRanking = () => {
         <Content active={active === 2}>Content3</Content>
         <Content active={active === 3}>Content4</Content>
       </>
-    </div>
+    </ContainerRanking>
   );
 };
 
