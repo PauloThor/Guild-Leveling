@@ -56,7 +56,8 @@ export const DisplayButton = styled(Button)`
   color: white !important;
   border: 1px solid var(--brown);
   border-radius: 15px !important;
-  animation: ${(props) => (props.jump ? "1s jump infinite" : "none")};
+  animation: ${(props) =>
+    props.jump === "true" ? "1s jump infinite" : "none"};
   width: 250px;
   font-family: var(--font);
   margin: 5px !important;
