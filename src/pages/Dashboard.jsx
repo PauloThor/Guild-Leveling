@@ -13,6 +13,7 @@ import Nav from "../components/Navigation/Nav";
 import { useInfoUser } from "../provider/user";
 import GuildInfo from "../components/GuildSelect/GuildInfo";
 import ResumeUser from "../components/Profile";
+import Footer from "../components/Footer";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -59,6 +60,7 @@ const Dashboard = () => {
               {/* <GuildDetailsContainer /> */}
             </section>
           </DashboardContainer>
+          <Footer/>
         </Nav>
       </Header>
     </Container>
