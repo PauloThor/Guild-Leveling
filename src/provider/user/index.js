@@ -139,6 +139,22 @@ export const UserProvider = ({ children }) => {
     history.push("/login");
   };
 
+  const changeUsername = (data) => {
+    api
+      .get(
+        "/habits/personal/",
+        { username: data },
+        {
+          headers: {
+            Authorization: `Bearer ${infoUser.access}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -148,6 +164,7 @@ export const UserProvider = ({ children }) => {
         setAuthenticated,
         updateStatus,
         logout,
+        changeUsername,
       }}
     >
       {children}

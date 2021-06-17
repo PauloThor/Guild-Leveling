@@ -126,11 +126,14 @@ const Col = styled.div`
 const Settings = () => {
   const [goal, setGoal] = useState("");
   const [quest, setQuest] = useState("");
+  const [guildName, setGuildName] = useState("");
+  const [guildText, setGuildText] = useState("");
+  const [name, setName] = useState("");
 
   const { infoQuests, getQuests } = useInfoQuests();
   const { createQuest, createActivity } = useTasksGuild();
-  const { infoUser } = useInfoUser();
-  const { getUserGuilds, infoGuild } = useInfoGuild();
+  const { infoUser, changeUsername } = useInfoUser();
+  const { getUserGuilds, infoGuild, createGuild } = useInfoGuild();
 
   const history = useHistory();
 
@@ -167,6 +170,20 @@ const Settings = () => {
     setQuest("");
   };
 
+  const handleNewGuld = () => {
+    const data = {
+      name: guildName,
+      description: guildText,
+      category: "leveling",
+    };
+
+    createGuild(data);
+  };
+
+  const handleName = () => {
+    changeUsername(name);
+  };
+
   return (
     <Container>
       <Header>
@@ -174,13 +191,25 @@ const Settings = () => {
           <SettingsContainer>
             <Col>
               <Card>
-                <StyledInput placeholder="Your new username" />
-                <StyledButton variant="contained" size="large">
+                <StyledInput
+                  placeholder="Your new username"
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
+                />
+                <StyledButton
+                  variant="contained"
+                  size="large"
+                  onClick={handleName}
+                >
                   Change username
                 </StyledButton>
               </Card>
               <Card>
-                <StyledInput placeholder="Your new guild" />
+                <StyledInput
+                  placeholder="Your new guild"
+                  onChange={(e) => setGuildName(e.target.value)}
+                  value={guildName}
+                />
                 <StyledButton variant="contained" size="large">
                   Create your Guild
                 </StyledButton>
