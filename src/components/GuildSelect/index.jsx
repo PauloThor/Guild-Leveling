@@ -14,9 +14,9 @@ const GuildSelect = () => {
 
   const history = useHistory();
 
-  // if (authenticated) {
-  //   history.push("/dashboard");
-  // }
+  if (authenticated) {
+    history.push("/dashboard");
+  }
 
   useEffect(() => {
     searchGuilds("leveling");
