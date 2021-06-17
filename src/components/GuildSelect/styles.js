@@ -125,6 +125,8 @@ export const Col = styled.div`
     font-family: var(--font);
     font-size: 1.2rem;
     margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
   }
 
   label {

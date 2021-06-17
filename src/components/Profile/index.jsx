@@ -13,8 +13,10 @@ const ResumeUser = ({ user }) => {
             Name: <span className="name">{user.username}</span> Level:
             <span className="lvl"> {user.level}</span>
           </span>
-          <span>Role: {user.guildRank}</span>
-          <span>Cash: $20</span>
+          <span>
+            Role: <span className="rank">{user.guildRank}</span> Cash:
+            <span className="cash"> $20</span>
+          </span>
           <ExperienceBar experience={user.exp} />
         </div>
       </div>
