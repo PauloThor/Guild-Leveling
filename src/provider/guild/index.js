@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../../services";
 import { useInfoUser } from "../../provider/user";
 const GuildContext = createContext([]);
@@ -14,7 +14,7 @@ export const GuildProvider = ({ children }) => {
   });
 
   const {
-    infoUser: { id, access },
+    infoUser: { access },
   } = useInfoUser();
 
   const searchGuilds = (itemToSearch) => {
@@ -25,9 +25,6 @@ export const GuildProvider = ({ children }) => {
 
   //Inserir o user na guild passando
   const joinGuild = (id, access) => {
-    console.log(access);
-    console.log(id);
-
     api
       .post(`/groups/${id}/subscribe/`, null, {
         headers: {
@@ -51,7 +48,6 @@ export const GuildProvider = ({ children }) => {
     };
 
     setMainGuilds(newMainGuilds);
-    // console.log(mainGuilds);
   };
 
   // const [token] =
@@ -72,16 +68,16 @@ export const GuildProvider = ({ children }) => {
   };
 
   //Criando uma guild, so precisa do token do user
-  // const createGuild = (data) => {
-  //   api
-  //     .post("/groups/", data, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((response) => setUserGuilds(response))
-  //     .then(() => getUserGuilds());
-  // };
+  const createGuild = (data) => {
+    api
+      .post("/groups/", data, {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      })
+      .then((response) => console.log(response))
+      .then(() => getUserGuilds());
+  };
 
   //Caso precise renderizar
   // useEffect(() => {
@@ -99,6 +95,7 @@ export const GuildProvider = ({ children }) => {
         mainGuilds,
         updateMainGuilds,
         getUserGuilds,
+        createGuild,
       }}
     >
       {children}

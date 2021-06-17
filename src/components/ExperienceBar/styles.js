@@ -10,7 +10,7 @@ export const ExperienceContainer = styled.div`
     display: inline-block;
     width: 100%;
     height: 27px;
-    background: var(--darkgray);
+    background: var(--brown);
     border-radius: 50px;
     color: var(--black);
     text-align: center;
@@ -25,7 +25,8 @@ export const ExperienceContainer = styled.div`
     max-width: 95.5%;
     width: ${({ experience }) => `${experience}%`};
     height: 65%;
-    background: var(--green);
+    background: var(--darkblue);
+    color: white;
     border-radius: 50px;
     animation: bar 2s ease;
     transition: 1s;

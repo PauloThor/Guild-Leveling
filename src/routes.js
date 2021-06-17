@@ -5,11 +5,9 @@ import Styleguide from "./Styleguide";
 import Dashboard from "./pages/Dashboard";
 import GuildSelect from "./pages/GuildSelect";
 import GuildDashboard from "./pages/GuildDashboard";
-import Header from "./components/Header";
-import Nav from "./components/Navigation/Nav";
-import Section from "./components/Section";
 import PageNotFound from "./pages/PageNotFound";
 import Shop from "./components/Shop";
+import Settings from "./components/Settings";
 import TutorialPage from "./pages/TutorialPage";
 
 const Routes = () => {
@@ -29,16 +27,13 @@ const Routes = () => {
       </Route>
       <Route exact path="/styleguide" component={Styleguide} />
       <Route exact path="/dashboard">
-        {/* <Header> */}
-        {/* <Nav> */}
         <Dashboard />
-        {/* </Nav> */}
-        {/* </Header> */}
       </Route>
       <Route exact path="/tutorial">
-        <TutorialPage/>
+        <TutorialPage />
       </Route>
       <Route exact path="/shop" component={Shop} />
+      <Route exact path="/settings" component={Settings} />
       <Route path={"*"} component={PageNotFound} />
     </Switch>
   );

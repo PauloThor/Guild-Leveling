@@ -96,15 +96,13 @@ export const GuildContainer = styled.div`
   padding: 10px;
   width: 50%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   font-family: var(--font);
   color: var(--white);
 
   h3 {
     font-family: var(--font);
-    margin-left: 130px;
-    @media (min-width: 780px) {
-      margin-left: 90.6px;
+    @media (min-width: 768px) {
       width: 21.5rem;
     }
   }
@@ -114,7 +112,6 @@ export const GuildContainer = styled.div`
     color: orange;
     display: inline-block;
     margin-bottom: 100px;
-    margin-left: 130px;
     font-weight: 700;
     @media (min-width: 690px) {
       margin-bottom: 10px;
@@ -125,18 +122,18 @@ export const GuildContainer = styled.div`
     @media (min-width: 690px) {
       max-width: 23.2rem;
       max-height: 320px;
-      margin-left: 35px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       flex-wrap: wrap;
-      align-content: center;
+      align-content: flex-start;
     }
   }
 `;
 
 export const SecondGuildContainer = styled(GuildContainer)`
   border-right: 1px solid var(--dark);
+  justify-content: center;
 
   img {
     max-height: 100px;
@@ -158,10 +155,11 @@ export const GuildTitle = styled.h4`
   margin: 3px;
   width: 15.1rem;
   font-family: var(--font);
-  margin-left: 130px;
+  @media (max-width: 375px) {
+    width: 13.5rem;
+  }
   @media (min-width: 690px) {
-    margin-left: 0;
-    width: 11rem;
+    width: 10.3rem;
   }
 `;
 

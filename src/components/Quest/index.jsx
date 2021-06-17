@@ -5,7 +5,6 @@ import styled from "styled-components";
 import SwordIcon from "../../assets/sword.png";
 import CircleIcon from "../../assets/circle.png";
 import { useInfoQuests } from "../../provider/quests";
-import { useEffect } from "react";
 
 const Container = styled.div`
   max-width: 300px;
@@ -17,9 +16,10 @@ const Container = styled.div`
   margin: 10px;
   padding: 10px;
   font-family: var(--font);
-  animation: 1s fromLeft;
+  animation: 1s vanish ease-in-out;
+  transition: 1s;
 
-  @keyframes fromLeft {
+  @keyframes fromSide {
     from {
       transform: translateX(-100%);
     }

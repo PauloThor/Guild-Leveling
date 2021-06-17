@@ -2,8 +2,6 @@ import { createContext, useContext, useState } from "react";
 import api from "../../services";
 import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { useInfoQuests } from "../quests";
-import { useInfoGuild } from "../guild";
 import { toast } from "react-toastify";
 
 const UserContext = createContext({});
@@ -129,7 +127,7 @@ export const UserProvider = ({ children }) => {
         const { user_id } = jwt_decode(access);
         localStorage.clear();
         localStorage.setItem("token", JSON.stringify(access));
-        setInfoUser({ ...infoUser, access, id: user_id, authenticated: true });
+        setInfoUser({ ...infoUser, access, id: user_id, authenticated: false });
         console.log(response.data);
       })
       .catch((err) => console.log(err, "Erro ao logar"));
@@ -137,6 +135,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.clear();
+    setInfoUser({ ...infoUser, authenticated: false });
     history.push("/login");
   };
 
