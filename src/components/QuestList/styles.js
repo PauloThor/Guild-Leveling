@@ -9,7 +9,7 @@ export const QuestsContainer = styled.div`
   padding: 10px;
   margin: 0.5rem;
   position: relative;
-  animation: vanish 1s;
+  animation: vanish 1s ease-in-out;
 
   span {
     font-family: var(--font);
@@ -38,14 +38,11 @@ export const QuestsDisplay = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  animation: vanish 1s;
+  animation: fromLeft 1s ease-in-out;
 
-  @keyframes vanish {
+  @keyframes fromLeft {
     from {
       opacity: 0;
-    }
-    to {
-      opacity: 1;
     }
   }
 `;

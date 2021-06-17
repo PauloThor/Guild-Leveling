@@ -17,9 +17,10 @@ const Container = styled.div`
   margin: 10px;
   padding: 10px;
   font-family: var(--font);
-  animation: 1s fromLeft;
+  animation: 1s vanish ease-in-out;
+  transition: 1s;
 
-  @keyframes fromLeft {
+  @keyframes fromSide {
     from {
       transform: translateX(-100%);
     }

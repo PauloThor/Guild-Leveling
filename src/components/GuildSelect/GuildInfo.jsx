@@ -1,16 +1,11 @@
-import styled from "styled-components";
+import { GuildDetailsContainer } from "../StyledComponents";
 import { useInfoGuild } from "../../provider/guild";
-
 import Guild1Logo from "../../assets/guild1.png";
 import Guild2Logo from "../../assets/guild2.png";
 import Guild3Logo from "../../assets/guild3.png";
 import Guild4Logo from "../../assets/guild4.png";
-import { Button, Modal } from "@material-ui/core";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { GuildDetailsContainer } from "../StyledComponents";
-import { useInfoUser } from "../../provider/user";
 import { useEffect } from "react";
+import styled from "styled-components";
 
 const Col = styled.div`
   display: flex;
@@ -45,8 +40,8 @@ const Col = styled.div`
 `;
 
 const GuildInfo = () => {
-  const { joinGuild, infoGuild, getUserGuilds } = useInfoGuild();
-  const { id, name, creator, users_on_group } = infoGuild;
+  const { infoGuild, getUserGuilds } = useInfoGuild();
+  const { name, creator, users_on_group } = infoGuild;
 
   const SelectedLogo = {
     "Scavenger Guild": Guild1Logo,
@@ -54,8 +49,6 @@ const GuildInfo = () => {
     "Fame Guild": Guild3Logo,
     "Ahjin Guild": Guild4Logo,
   };
-
-  const history = useHistory();
 
   useEffect(() => {
     getUserGuilds();

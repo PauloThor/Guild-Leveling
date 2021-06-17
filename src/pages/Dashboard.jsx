@@ -4,6 +4,7 @@ import { useInfoGuild } from "../provider/guild";
 import { useInfoQuests } from "../provider/quests";
 import styled from "styled-components";
 import {
+  Container,
   GuildDetailsContainer,
   ProfileContainer,
 } from "../components/StyledComponents";
@@ -12,12 +13,6 @@ import Nav from "../components/Navigation/Nav";
 import { useInfoUser } from "../provider/user";
 import GuildInfo from "../components/GuildSelect/GuildInfo";
 import ResumeUser from "../components/Profile";
-
-const Container = styled.div`
-  background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
-  min-height: 100vh;
-  width: 100vw;
-`;
 
 const DashboardContainer = styled.div`
   display: flex;

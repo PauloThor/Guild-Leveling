@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import RPG from "../../assets/rpg.png";
+import Dragon from "../../assets/dragon.png";
 import { Container } from "./styles";
 import * as yup from "yup";
 
@@ -55,7 +56,13 @@ const FormSing = () => {
   return (
     <Container>
       <div className="left-container">
-        <h1>Imagem aqui</h1>
+        <img src={Dragon} alt="" />
+        <div className="description">
+          <h2>
+            Join this journey and discover a universe of possibilities to
+            overcome your greatest challenges!
+          </h2>
+        </div>
       </div>
 
       <div className="right-container">

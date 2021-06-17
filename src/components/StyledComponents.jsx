@@ -73,3 +73,9 @@ export const GuildDetailsContainer = styled.div`
     }
   }
 `;
+
+export const Container = styled.div`
+  background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
+  min-height: 100vh;
+  width: 100vw;
+`;

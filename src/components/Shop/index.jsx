@@ -87,12 +87,15 @@ const StyledCart = styled.div`
   text-align: center;
   padding: 11px;
   min-height: 542px;
+  font-family: var(--font);
 
   h3 {
     background: var(--gradient-blue-dark);
     border: 1px solid var(--darkblue);
     padding: 1rem;
     border-radius: 15px;
+    font-family: var(--font);
+    font-size: 1.2rem;
   }
 
   p {
@@ -102,6 +105,8 @@ const StyledCart = styled.div`
     border-radius: 15px;
     border: 1px solid var(--darkblue);
     color: lightgreen;
+    font-family: var(--font);
+    font-size: 1.1rem;
   }
 `;
 
@@ -111,13 +116,24 @@ const CartProduct = styled.div`
   margin: 1rem;
   border-radius: 15px;
   border: 1px solid var(--brown);
+  animation: vanish 1s ease;
+
+  @keyframes vanish {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
   p {
     background: var(--gradient-blue-dark);
     color: white;
-    margin: 0.5rem auto;
+    margin: 0.6rem auto;
     padding: 0.5rem 1rem;
     border: none;
+    font-family: var(--font);
   }
 
   button {
@@ -126,12 +142,17 @@ const CartProduct = styled.div`
     color: red;
     border-radius: 10px;
     padding: 0.5rem 1rem;
+    font-family: var(--font);
 
     &:hover {
       background: var(--gradient-blue-dark);
       border-color: var(--darkblue);
       color: white;
     }
+  }
+
+  span {
+    font-family: var(--font);
   }
 `;
 
@@ -235,7 +256,8 @@ const Shop = () => {
                 </CartProduct>
               ))}
               <p>
-                Cost: {cart.reduce((acc, product) => acc + product.price, 0)}
+                Total Cost: $
+                {cart.reduce((acc, product) => acc + product.price, 0)}
               </p>
             </StyledCart>
           </Content>
