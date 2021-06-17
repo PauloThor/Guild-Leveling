@@ -12,6 +12,7 @@ import Nav from "../components/Navigation/Nav";
 import { useInfoUser } from "../provider/user";
 import GuildInfo from "../components/GuildSelect/GuildInfo";
 import ResumeUser from "../components/Profile";
+import Footer from "../components/Footer";
 
 const Container = styled.div`
   background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
@@ -64,6 +65,7 @@ const Dashboard = () => {
               {/* <GuildDetailsContainer /> */}
             </section>
           </DashboardContainer>
+          <Footer/>
         </Nav>
       </Header>
     </Container>
