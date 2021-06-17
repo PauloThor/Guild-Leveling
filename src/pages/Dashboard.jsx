@@ -20,14 +20,17 @@ const DashboardContainer = styled.div`
   padding: 69px 0 0 40px;
   margin: 0 auto;
   width: fit-content;
+  max-width: 100%;
 
   section {
     /* width: 100%; */
+    /* max-width: 300px; */
   }
 
   @media (max-width: 768px) {
     section {
       width: 100%;
+      max-width: 300px;
     }
 
     .user {
@@ -42,6 +45,7 @@ const DashboardContainer = styled.div`
   @media (max-width: 1200px) {
     section {
       width: 100%;
+      max-width: 100%;
     }
 
     .user {
@@ -55,7 +59,7 @@ const DashboardContainer = styled.div`
 `;
 
 const Dashboard = () => {
-  const { updateMainGuilds } = useInfoGuild();
+  const { updateMainGuilds, getUserGuilds } = useInfoGuild();
   const { getQuests } = useInfoQuests();
   const { infoUser } = useInfoUser();
 
@@ -68,6 +72,7 @@ const Dashboard = () => {
   useEffect(() => {
     updateMainGuilds();
     getQuests();
+    getUserGuilds();
     // eslint-disable-next-line
   }, []);
 

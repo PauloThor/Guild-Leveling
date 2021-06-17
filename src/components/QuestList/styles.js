@@ -24,6 +24,10 @@ export const QuestsContainer = styled.div`
       opacity: 1;
     }
   }
+
+  @media (max-width: 374px) {
+    max-width: 280px;
+  }
 `;
 
 export const QuestsDisplay = styled.div`

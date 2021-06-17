@@ -18,6 +18,7 @@ const Styleguide = () => {
       {show && <GuildRanking />}
     </div>
   );
+  //content size on mobile
 };
 
 export default Styleguide;

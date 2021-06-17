@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Content,
   Tabs,
@@ -6,74 +7,141 @@ import {
   GuildTitle,
   SecondGuildContainer,
 } from "./styles";
+import styled from "styled-components";
 import { useInfoGuild } from "../../provider/guild";
-import Guild1Logo from "../../assets/guild1.png";
 import { useEffect, useState } from "react";
-import { ContainerRanking } from "./styles";
+
+import Guild1Logo from "../../assets/guild1.png";
+import Guild2Logo from "../../assets/guild2.png";
+import Guild3Logo from "../../assets/guild3.png";
+import Guild4Logo from "../../assets/guild4.png";
+
+const Container = styled.div`
+  background-image: var(--gradient-blue-dark);
+  width: 80vw;
+  margin: 79px 0;
+  border-radius: 15px;
+  min-height: 250px;
+  margin-left: 16vw;
+  @media (min-width: 750px) {
+    margin-left: 11.5vw;
+  }
+`;
 
 const GuildRanking = () => {
   const { updateMainGuilds, mainGuilds } = useInfoGuild();
+
   const [active, setActive] = useState("Scavenger Guild");
   const handleClick = (e) => {
     const index = parseInt(e.target.id, 0);
     if (index !== active) {
       setActive(index);
     }
-    handleUpdate();
   };
 
   useEffect(() => {
-    handleUpdate();
-    // eslint-disable-next-line
-  }, []);
-
-  const handleUpdate = () => {
-    updateMainGuilds();
-  };
+    if (mainGuilds["Scavenger Guild"]?.id === undefined) updateMainGuilds();
+  }, [mainGuilds]);
 
   return (
-    <ContainerRanking>
-      {/* {sortedByName.length > 0 &&
-        value === "name" &&
-        sortedByName.map((guild) => <p>{guild?.name}</p>)}
-      {value === "members" &&
-        sortedByMembers.map((guild) => <p>{guild?.name}</p>)} */}
-      <Tabs>
-        <Tab onClick={(e) => handleClick(e)} active={active === 0} id={0}>
-          Scavenger Guild
-        </Tab>
-        <Tab onClick={(e) => handleClick(e)} active={active === 1} id={1}>
-          Hunters Guild
-        </Tab>
-        <Tab onClick={(e) => handleClick(e)} active={active === 2} id={2}>
-          Fame Guild
-        </Tab>
-        <Tab onClick={(e) => handleClick(e)} active={active === 3} id={3}>
-          Ahjin Guild
-        </Tab>
-      </Tabs>
-      <>
-        <Content active={active === 0}>
-          <GuildContainer>
-            <div>
-              <h3>
-                Guild Master: {mainGuilds["Scavenger Guild"]?.creator.username}
-              </h3>
-              <h3>Members</h3>
-              {mainGuilds["Scavenger Guild"]?.users_on_group?.map((player) => (
-                <GuildTitle>{player?.username}</GuildTitle>
-              ))}
-            </div>
-          </GuildContainer>
-          <SecondGuildContainer>
-            <img src={Guild1Logo} alt="scavenger" />
-          </SecondGuildContainer>
-        </Content>
-        <Content active={active === 1}>Content2</Content>
-        <Content active={active === 2}>Content3</Content>
-        <Content active={active === 3}>Content4</Content>
-      </>
-    </ContainerRanking>
+    <>
+      {mainGuilds["Scavenger Guild"]?.id === 528 && (
+        <Container>
+          <Tabs>
+            <Tab onClick={(e) => handleClick(e)} active={active === 0} id={0}>
+              Scavenger Guild
+            </Tab>
+            <Tab onClick={(e) => handleClick(e)} active={active === 1} id={1}>
+              Hunters Guild
+            </Tab>
+            <Tab onClick={(e) => handleClick(e)} active={active === 2} id={2}>
+              Fame Guild
+            </Tab>
+            <Tab onClick={(e) => handleClick(e)} active={active === 3} id={3}>
+              Ahjin Guild
+            </Tab>
+          </Tabs>
+          <>
+            <Content active={active === 0}>
+              <GuildContainer>
+                <div>
+                  <h3>Guild Master: </h3>
+                  <label>
+                    {mainGuilds["Scavenger Guild"]?.creator.username}
+                  </label>
+                  <h3>Members</h3>
+                  <section>
+                    {mainGuilds["Scavenger Guild"]?.users_on_group?.map(
+                      (player) => (
+                        <GuildTitle>{player?.username}</GuildTitle>
+                      )
+                    )}
+                  </section>
+                </div>
+              </GuildContainer>
+              <SecondGuildContainer>
+                <img src={Guild1Logo} alt="scavenger" />
+              </SecondGuildContainer>
+            </Content>
+            <Content active={active === 1}>
+              <GuildContainer>
+                <div>
+                  <h3>Guild Master: </h3>
+                  <label>{mainGuilds["Hunters Guild"]?.creator.username}</label>
+                  <h3>Members</h3>
+                  <section>
+                    {mainGuilds["Hunters Guild"]?.users_on_group?.map(
+                      (player) => (
+                        <GuildTitle>{player?.username}</GuildTitle>
+                      )
+                    )}
+                  </section>
+                </div>
+              </GuildContainer>
+              <SecondGuildContainer>
+                <img src={Guild2Logo} alt="hunter" />
+              </SecondGuildContainer>
+            </Content>
+            <Content active={active === 2}>
+              <GuildContainer>
+                <div>
+                  <h3>Guild Master: </h3>
+                  <label>{mainGuilds["Fame Guild"]?.creator.username}</label>
+                  <h3>Members</h3>
+                  <section>
+                    {mainGuilds["Fame Guild"]?.users_on_group?.map((player) => (
+                      <GuildTitle>{player?.username}</GuildTitle>
+                    ))}
+                  </section>
+                </div>
+              </GuildContainer>
+              <SecondGuildContainer>
+                <img src={Guild3Logo} alt="fame" />
+              </SecondGuildContainer>
+            </Content>
+            <Content active={active === 3}>
+              <GuildContainer>
+                <div>
+                  <h3>Guild Master: </h3>
+                  <label>{mainGuilds["Ahjin Guild"]?.creator.username}</label>
+                  <h3>Members</h3>
+                  <section>
+                    {mainGuilds["Ahjin Guild"]?.users_on_group?.map(
+                      (player) => (
+                        <GuildTitle>{player?.username}</GuildTitle>
+                      )
+                    )}
+                  </section>
+                </div>
+              </GuildContainer>
+              <SecondGuildContainer>
+                <img src={Guild4Logo} alt="ahjin" />
+              </SecondGuildContainer>
+            </Content>
+          </>
+        </Container>
+      )}
+    </>
   );
 };
 

@@ -32,7 +32,7 @@ export const ProfileContainer = styled.div`
 
 export const GuildDetailsContainer = styled.div`
   background: var(--gradient-blue-dark);
-  width: 320px;
+  width: 280px;
   min-height: 280px;
   border-radius: 15px;
   padding: 10px;
