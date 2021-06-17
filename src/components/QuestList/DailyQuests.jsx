@@ -1,16 +1,12 @@
-import { Button, TextField } from "@material-ui/core";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import Quest from "../Quest";
 import { useInfoQuests } from "../../provider/quests";
-import { useInfoUser } from "../../provider/user";
 
 import "./styles";
 import {
   BlueDisplayButton,
   DisplayButton,
+  DisplayTitle,
   QuestsContainer,
   QuestsDisplay,
   StyledInput,
@@ -22,19 +18,8 @@ const DailyQuests = () => {
   const [questName, setQuestName] = useState("");
   // const [chosenRank, setChosenRank] = useState('D')
 
-  const {
-    getQuests,
-    infoQuests,
-    addQuest,
-    removeQuest,
-    getCurrentQuests,
-    currentQuests,
-    addDaily,
-    dailyQuests,
-    getDailyQuests,
-  } = useInfoQuests();
-
-  const { infoUser, updateStatus } = useInfoUser();
+  const { getQuests, addQuest, addDaily, dailyQuests, getDailyQuests } =
+    useInfoQuests();
 
   const handleShow = () => {
     setShow(!show);
@@ -83,6 +68,7 @@ const DailyQuests = () => {
             justifyContent: "center",
           }}
         >
+          <DisplayTitle>Daily Quests</DisplayTitle>
           <StyledInput
             onChange={(e) => setQuestName(e.target.value)}
             value={questName}

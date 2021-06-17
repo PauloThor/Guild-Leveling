@@ -3,8 +3,9 @@ import Header from "../components/Header";
 import Nav from "../components/Navigation/Nav";
 import Tutorial from "../components/Tutorial";
 
-import styled from 'styled-components';
-
+import styled from "styled-components";
+import { useInfoUser } from "../provider/user";
+import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
   background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
@@ -28,20 +29,26 @@ const TutorialContainer = styled.div`
   }
 `;
 
+const TutorialPage = () => {
+  const { infoUser } = useInfoUser();
 
-const TutorialPage = ()=>{
+  const history = useHistory();
 
-  return(
+  if (!infoUser.authenticated) {
+    history.push("/login");
+  }
+
+  return (
     <Container>
-    <Header>
-      <Nav>
-        <TutorialContainer>
-          <Tutorial/>
-        </TutorialContainer>
-        <Footer/>
-      </Nav>
-    </Header>   
-		</Container>
+      <Header>
+        <Nav>
+          <TutorialContainer>
+            <Tutorial />
+          </TutorialContainer>
+          <Footer />
+        </Nav>
+      </Header>
+    </Container>
   );
 };
 

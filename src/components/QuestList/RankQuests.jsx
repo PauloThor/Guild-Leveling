@@ -6,6 +6,7 @@ import Quest from "../Quest";
 import {
   BlueDisplayButton,
   DisplayButton,
+  DisplayTitle,
   QuestsContainer,
   QuestsDisplay,
 } from "./styles";
@@ -13,14 +14,8 @@ import {
 const RankQuests = () => {
   const [show, setShow] = useState(true);
 
-  const {
-    getQuests,
-    infoQuests,
-    addQuest,
-    removeQuest,
-    getCurrentQuests,
-    currentQuests,
-  } = useInfoQuests();
+  const { getQuests, infoQuests, getCurrentQuests, currentQuests } =
+    useInfoQuests();
 
   const { infoUser, updateStatus } = useInfoUser();
 
@@ -66,6 +61,7 @@ const RankQuests = () => {
         Drop quests
       </BlueDisplayButton>
       <QuestsDisplay show={show}>
+        <DisplayTitle>Ranked Quests</DisplayTitle>
         <DisplayButton
           variant="contained"
           onClick={showQuests}

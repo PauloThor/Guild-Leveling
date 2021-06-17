@@ -3,29 +3,21 @@ import QuestList from "../components/QuestList";
 import { useInfoGuild } from "../provider/guild";
 import { useInfoQuests } from "../provider/quests";
 import styled from "styled-components";
-import {
-  GuildDetailsContainer,
-  ProfileContainer,
-} from "../components/StyledComponents";
+import { Container } from "../components/StyledComponents";
 import Header from "../components/Header";
 import Nav from "../components/Navigation/Nav";
 import { useInfoUser } from "../provider/user";
 import GuildInfo from "../components/GuildSelect/GuildInfo";
 import ResumeUser from "../components/Profile";
 import Footer from "../components/Footer";
-
-const Container = styled.div`
-  background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
-  min-height: 100vh;
-  width: 100vw;
-`;
+import { useHistory } from "react-router-dom";
 
 const DashboardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 100px 0 0 40px;
+  padding: 69px 0 0 40px;
   margin: 0 auto;
   width: fit-content;
 
@@ -37,13 +29,41 @@ const DashboardContainer = styled.div`
     section {
       width: 100%;
     }
+
+    .user {
+      order: 1;
+    }
+
+    .quests {
+      order: 2;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    section {
+      width: 100%;
+    }
+
+    .user {
+      order: 1;
+    }
+
+    .quests {
+      order: 2;
+    }
   }
 `;
 
 const Dashboard = () => {
   const { updateMainGuilds } = useInfoGuild();
-  const { infoQuests, getQuests } = useInfoQuests();
-  const { updateStatus, infoUser } = useInfoUser();
+  const { getQuests } = useInfoQuests();
+  const { infoUser } = useInfoUser();
+
+  const history = useHistory();
+
+  if (!infoUser.authenticated) {
+    history.push("/login");
+  }
 
   useEffect(() => {
     updateMainGuilds();
@@ -56,16 +76,15 @@ const Dashboard = () => {
       <Header>
         <Nav>
           <DashboardContainer>
-            <section>
+            <section className="quests">
               <QuestList />
             </section>
-            <section>
+            <section className="user">
               <ResumeUser user={infoUser} />
               <GuildInfo />
-              {/* <GuildDetailsContainer /> */}
             </section>
           </DashboardContainer>
-          <Footer/>
+          <Footer />
         </Nav>
       </Header>
     </Container>

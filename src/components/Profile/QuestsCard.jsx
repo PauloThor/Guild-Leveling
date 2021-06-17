@@ -11,8 +11,8 @@ const QuestsCard = () => {
         .slice(-4)
         .map((quest, index) => {
           return (
-            <div className="quest">
-              <li key={index}>
+            <div className="quest" key={index}>
+              <li>
                 <h3>{quest.title}</h3>
                 <span>
                   Rank: <span className="rank"></span>

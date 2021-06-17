@@ -1,4 +1,4 @@
-import { Button, TextField } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import styled from "styled-components";
 
 export const QuestsContainer = styled.div`
@@ -9,7 +9,7 @@ export const QuestsContainer = styled.div`
   padding: 10px;
   margin: 0.5rem;
   position: relative;
-  animation: vanish 1s;
+  animation: vanish 1s ease-in-out;
 
   span {
     font-family: var(--font);
@@ -38,14 +38,11 @@ export const QuestsDisplay = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  animation: vanish 1s;
+  animation: fromLeft 1s ease-in-out;
 
-  @keyframes vanish {
+  @keyframes fromLeft {
     from {
       opacity: 0;
-    }
-    to {
-      opacity: 1;
     }
   }
 `;
@@ -99,4 +96,21 @@ export const StyledInput = styled.input`
   ::placeholder {
     text-align: center;
   }
+`;
+
+export const DisplayTitle = styled.div`
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient-purple-dark);
+  border: 1px solid var(--purple);
+  border-radius: 15px;
+  padding: 1rem;
+  font-family: var(--font);
+  font-size: 24px;
+  white-space: nowrap;
+  color: white;
+  width: 90%;
+  text-align: center;
 `;
