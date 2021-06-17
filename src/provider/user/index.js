@@ -135,6 +135,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.clear();
+    setInfoUser({ ...infoUser, authenticated: false });
     history.push("/login");
   };
 

@@ -126,7 +126,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: 779px) {
-    width: 320px;
+    width: 280px;
     padding: 10px 0;
 
     div.user-profile {

@@ -4,9 +4,11 @@ import { Container } from "../StyledComponents";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 import { useInfoQuests } from "../../provider/quests";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInfoUser } from "../../provider/user";
 import { useHistory } from "react-router-dom";
+import { useTasksGuild } from "../../provider/tasksguilds";
+import { useInfoGuild } from "../../provider/guild";
 
 const SettingsContainer = styled.div`
   padding: 100px 0 0 40px;
@@ -122,9 +124,13 @@ const Col = styled.div`
 `;
 
 const Settings = () => {
-  const { infoQuests, getQuests } = useInfoQuests();
+  const [goal, setGoal] = useState("");
+  const [quest, setQuest] = useState("");
 
+  const { infoQuests, getQuests } = useInfoQuests();
+  const { createQuest, createActivity } = useTasksGuild();
   const { infoUser } = useInfoUser();
+  const { getUserGuilds, infoGuild } = useInfoGuild();
 
   const history = useHistory();
 
@@ -134,8 +140,32 @@ const Settings = () => {
 
   useEffect(() => {
     getQuests();
+    getUserGuilds();
     // eslint-disable-next-line
   }, []);
+
+  const handleGoal = () => {
+    const data = {
+      title: goal,
+      difficulty: "A",
+      how_much_achieved: 1,
+      group: infoGuild.id,
+    };
+
+    createQuest(data);
+    setGoal("");
+  };
+
+  const handleQuest = () => {
+    const data = {
+      title: quest,
+      realization_time: new Date(),
+      group: infoGuild.id,
+    };
+
+    createActivity(data);
+    setQuest("");
+  };
 
   return (
     <Container>
@@ -156,14 +186,30 @@ const Settings = () => {
                 </StyledButton>
               </Card>
               <Card>
-                <StyledInput placeholder="Your new guild quest" />
-                <StyledButton variant="contained" size="large">
+                <StyledInput
+                  placeholder="Your new guild quest"
+                  onChange={(e) => setQuest(e.target.value)}
+                  value={quest}
+                />
+                <StyledButton
+                  variant="contained"
+                  size="large"
+                  onClick={handleQuest}
+                >
                   Create a guild quest
                 </StyledButton>
               </Card>
               <Card>
-                <StyledInput placeholder="Your new guild goal" />
-                <StyledButton variant="contained" size="large">
+                <StyledInput
+                  placeholder="Your new guild goal"
+                  onChange={(e) => setGoal(e.target.value)}
+                  value={goal}
+                />
+                <StyledButton
+                  variant="contained"
+                  size="large"
+                  onClick={handleGoal}
+                >
                   Create a guild goal
                 </StyledButton>
               </Card>

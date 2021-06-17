@@ -68,16 +68,16 @@ export const GuildProvider = ({ children }) => {
   };
 
   //Criando uma guild, so precisa do token do user
-  // const createGuild = (data) => {
-  //   api
-  //     .post("/groups/", data, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((response) => setUserGuilds(response))
-  //     .then(() => getUserGuilds());
-  // };
+  const createGuild = (data) => {
+    api
+      .post("/groups/", data, {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      })
+      .then((response) => console.log(response))
+      .then(() => getUserGuilds());
+  };
 
   //Caso precise renderizar
   // useEffect(() => {
@@ -95,6 +95,7 @@ export const GuildProvider = ({ children }) => {
         mainGuilds,
         updateMainGuilds,
         getUserGuilds,
+        createGuild,
       }}
     >
       {children}
