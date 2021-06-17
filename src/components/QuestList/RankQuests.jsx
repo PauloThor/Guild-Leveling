@@ -66,7 +66,7 @@ const RankQuests = () => {
           variant="contained"
           onClick={showQuests}
           size="large"
-          jump
+          jump="true"
         >
           SHOW QUESTS
         </DisplayButton>

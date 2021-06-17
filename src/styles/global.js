@@ -54,6 +54,7 @@ export default createGlobalStyle`
     }
 
     body {
-        /* overflow: hidden; */
+        max-width: 100%;
+        overflow-x: hidden;
     }
 `;
