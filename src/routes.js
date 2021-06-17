@@ -8,6 +8,7 @@ import GuildDashboard from "./pages/GuildDashboard";
 import PageNotFound from "./pages/PageNotFound";
 import Shop from "./components/Shop";
 import Settings from "./components/Settings";
+import TutorialPage from "./pages/TutorialPage";
 
 const Routes = () => {
   return (
@@ -27,6 +28,9 @@ const Routes = () => {
       <Route exact path="/styleguide" component={Styleguide} />
       <Route exact path="/dashboard">
         <Dashboard />
+      </Route>
+      <Route exact path="/tutorial">
+        <TutorialPage />
       </Route>
       <Route exact path="/shop" component={Shop} />
       <Route exact path="/settings" component={Settings} />
