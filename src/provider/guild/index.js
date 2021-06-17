@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../../services";
 import { useInfoUser } from "../../provider/user";
 const GuildContext = createContext([]);
@@ -14,7 +14,7 @@ export const GuildProvider = ({ children }) => {
   });
 
   const {
-    infoUser: { id, access },
+    infoUser: { access },
   } = useInfoUser();
 
   const searchGuilds = (itemToSearch) => {
@@ -25,9 +25,6 @@ export const GuildProvider = ({ children }) => {
 
   //Inserir o user na guild passando
   const joinGuild = (id, access) => {
-    console.log(access);
-    console.log(id);
-
     api
       .post(`/groups/${id}/subscribe/`, null, {
         headers: {
@@ -51,7 +48,6 @@ export const GuildProvider = ({ children }) => {
     };
 
     setMainGuilds(newMainGuilds);
-    console.log(mainGuilds);
   };
 
   // const [token] =

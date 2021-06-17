@@ -64,7 +64,7 @@ export const GuildDetailsContainer = styled.div`
 
   @media (min-width: 780px) {
     width: 520px;
-    margin: 15px 0.5rem;
+    margin: 15px auto;
     justify-content: space-between;
 
     img {
@@ -72,4 +72,14 @@ export const GuildDetailsContainer = styled.div`
       width: 180px;
     }
   }
+
+  @media (min-width: 1200px) {
+    margin: 15px 0.5rem;
+  }
+`;
+
+export const Container = styled.div`
+  background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
+  min-height: 100vh;
+  width: 100vw;
 `;

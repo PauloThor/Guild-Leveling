@@ -24,6 +24,7 @@ const NavMenu = ({ isOpen }) => {
       <li onClick={() => handlePath("/tutorial")}>Tutorial</li>
       <li onClick={() => handlePath("/guilds")}>Guilds</li>
       <li onClick={() => handlePath("/shop")}>Shop</li>
+      <li onClick={() => handlePath("/settings")}>Settings</li>
       <li onClick={logout}>Logout</li>
     </StyledUl>
   );

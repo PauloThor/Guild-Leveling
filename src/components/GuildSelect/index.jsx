@@ -4,12 +4,19 @@ import { useEffect } from "react";
 import { useInfoUser } from "../../provider/user";
 import { starterGuilds } from "../../database";
 import GuildCard from "./GuildCard";
+import { useHistory } from "react-router-dom";
 
 const GuildSelect = () => {
   const { searchGuilds, infoGuilds } = useInfoGuild();
   const {
-    infoUser: { access },
+    infoUser: { access, authenticated },
   } = useInfoUser();
+
+  const history = useHistory();
+
+  if (authenticated) {
+    history.push("/dashboard");
+  }
 
   useEffect(() => {
     searchGuilds("leveling");

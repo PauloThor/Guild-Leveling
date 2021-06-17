@@ -2,8 +2,6 @@ import { createContext, useContext, useState } from "react";
 import api from "../../services";
 import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { useInfoQuests } from "../quests";
-import { useInfoGuild } from "../guild";
 import { toast } from "react-toastify";
 
 const UserContext = createContext({});
