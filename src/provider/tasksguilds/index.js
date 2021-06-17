@@ -24,9 +24,25 @@ export const TasksGuildProvider = ({ children }) => {
   };
 
   const createQuest = (data) => {
-    api.post("/goals/", data, {
-      headers: `Bearer ${access}`,
-    });
+    api
+      .post("/goals/", data, {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  const createActivity = (data) => {
+    api
+      .post("/activities/", data, {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   const updateQuest = (idQuest) => {
@@ -52,7 +68,13 @@ export const TasksGuildProvider = ({ children }) => {
 
   return (
     <TasksGuildContext.Provider
-      value={{ task, tasksFromGuild, getQuestsFromGuild }}
+      value={{
+        task,
+        tasksFromGuild,
+        getQuestsFromGuild,
+        createQuest,
+        createActivity,
+      }}
     >
       {children}
     </TasksGuildContext.Provider>
