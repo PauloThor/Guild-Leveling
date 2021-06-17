@@ -24,7 +24,7 @@ const GuildInfo = () => {
     if (guild.id === 530) logo = Guild3Logo;
     if (guild.id === 531) logo = Guild4Logo;
   };
-  
+
   useEffect(() => {
     if (infoGuild.length > 0) {
       getQuestsFromGuild(guild.id);
