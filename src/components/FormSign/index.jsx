@@ -9,11 +9,13 @@ import RPG from "../../assets/rpg.png";
 import Dragon from "../../assets/dragon.png";
 import { Container } from "./styles";
 import * as yup from "yup";
+import { useInfoGuild } from "../../provider/guild";
 
 const FormSing = () => {
   const [inputType, setInputType] = useState("password");
   const [user, setUser] = useState([]);
   const { createAccount } = useInfoUser();
+  const { searchGuilds } = useInfoGuild();
 
   const schema = yup.object().shape({
     username: yup.string().required("Required field."),
@@ -52,6 +54,11 @@ const FormSing = () => {
       password: data.password,
     });
   };
+
+  useEffect(() => {
+    searchGuilds("leveling");
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Container>

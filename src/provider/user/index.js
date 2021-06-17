@@ -127,7 +127,7 @@ export const UserProvider = ({ children }) => {
         const { user_id } = jwt_decode(access);
         localStorage.clear();
         localStorage.setItem("token", JSON.stringify(access));
-        setInfoUser({ ...infoUser, access, id: user_id, authenticated: true });
+        setInfoUser({ ...infoUser, access, id: user_id, authenticated: false });
         console.log(response.data);
       })
       .catch((err) => console.log(err, "Erro ao logar"));

@@ -59,7 +59,7 @@ const DashboardContainer = styled.div`
 `;
 
 const Dashboard = () => {
-  const { updateMainGuilds } = useInfoGuild();
+  const { updateMainGuilds, getUserGuilds } = useInfoGuild();
   const { getQuests } = useInfoQuests();
   const { infoUser } = useInfoUser();
 
@@ -72,6 +72,7 @@ const Dashboard = () => {
   useEffect(() => {
     updateMainGuilds();
     getQuests();
+    getUserGuilds();
     // eslint-disable-next-line
   }, []);
 
