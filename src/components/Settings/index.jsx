@@ -1,6 +1,5 @@
 import Header from "../Header";
 import Nav from "../Navigation/Nav";
-import { Container } from "../StyledComponents";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 import { useInfoQuests } from "../../provider/quests";
@@ -9,6 +8,12 @@ import { useInfoUser } from "../../provider/user";
 import { useHistory } from "react-router-dom";
 import { useTasksGuild } from "../../provider/tasksguilds";
 import { useInfoGuild } from "../../provider/guild";
+
+export const Container = styled.div`
+  background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
+  min-height: 100vh;
+  width: 100vw;
+`;
 
 const SettingsContainer = styled.div`
   padding: 100px 0 0 40px;

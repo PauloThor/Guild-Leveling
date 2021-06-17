@@ -1,4 +1,3 @@
-import { GuildDetailsContainer } from "../StyledComponents";
 import { useInfoGuild } from "../../provider/guild";
 import Guild1Logo from "../../assets/guild1.png";
 import Guild2Logo from "../../assets/guild2.png";
@@ -6,6 +5,54 @@ import Guild3Logo from "../../assets/guild3.png";
 import Guild4Logo from "../../assets/guild4.png";
 import { useEffect } from "react";
 import styled from "styled-components";
+
+const GuildDetailsContainer = styled.div`
+  background: var(--gradient-blue-dark);
+  width: 280px;
+  min-height: 280px;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px auto;
+  position: relative;
+  animation: vanish 1s;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  span {
+    font-family: var(--font);
+    font-size: 1.2rem;
+  }
+
+  img {
+    width: 100px;
+  }
+
+  @keyframes vanish {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: 780px) {
+    width: 520px;
+    margin: 15px auto;
+    justify-content: space-between;
+
+    img {
+      height: 250px;
+      width: 180px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    margin: 15px 0.5rem;
+  }
+`;
 
 const Col = styled.div`
   display: flex;
