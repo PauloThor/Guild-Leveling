@@ -34,7 +34,7 @@ export const Container = styled.div`
 
   h3 {
     font-size: 3rem;
-    padding-top: 8px;
+    padding: 7px;
   }
 `;
 
@@ -43,9 +43,9 @@ export const GuildButton = styled.button`
   padding: 10px;
   color: white;
   border-radius: 10px;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-family: var(--font);
-  /* border: 1px solid var(--brown); */
+  width: 70%;
 
   &:hover {
     background: var(--gradient-blue-dark);
@@ -99,27 +99,13 @@ export const GuildContainer = styled.div`
   justify-content: center;
   font-family: var(--font);
   color: var(--white);
+
   h3 {
     font-family: var(--font);
     margin-left: 130px;
     @media (min-width: 780px) {
       margin-left: 90.6px;
       width: 21.5rem;
-    }
-  }
-  .gma {
-    margin-bottom: 85px;
-    max-width: 150px;
-    background: var(--gradient-brown-dark);
-    padding: 1rem;
-    border-radius: 15px;
-    border: 1px solid var(--brown);
-    font-family: var(--font);
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-    @media (min-width: 780px) {
-      max-width: initial;
-      display: inline;
     }
   }
 
@@ -130,10 +116,22 @@ export const GuildContainer = styled.div`
     margin-bottom: 100px;
     margin-left: 130px;
     font-weight: 700;
+    @media (min-width: 690px) {
+      margin-bottom: 10px;
+    }
   }
-  p {
-    font-family: var(--font);
-    color: var(--white);
+
+  section {
+    @media (min-width: 690px) {
+      max-width: 23.2rem;
+      max-height: 320px;
+      margin-left: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      align-content: center;
+    }
   }
 `;
 
@@ -143,7 +141,7 @@ export const SecondGuildContainer = styled(GuildContainer)`
   img {
     max-height: 100px;
     min-height: 9rem;
-    @media (min-width: 650px) {
+    @media (min-width: 690px) {
       max-height: 250px;
     }
     @media (min-width: 860px) {
@@ -161,8 +159,104 @@ export const GuildTitle = styled.h4`
   width: 15.1rem;
   font-family: var(--font);
   margin-left: 130px;
-  @media (min-width: 780px) {
-    margin-left: 90.6px;
-    width: 21.5rem;
+  @media (min-width: 690px) {
+    margin-left: 0;
+    width: 11rem;
   }
+`;
+
+export const Col = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--font);
+  padding: 0 5px;
+
+  p,
+  h3 {
+    background: var(--gradient-brown-dark);
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid var(--brown);
+    font-family: var(--font);
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  label {
+    color: orange;
+    font-family: var(--font);
+  }
+
+  h3 {
+    margin: 1rem 0;
+    font-size: 1.3rem;
+  }
+`;
+
+export const CardContainer = styled.div`
+  @keyframes leftToRight {
+    from {
+      transform: translateX(-50%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  width: 400px;
+  animation: 2s leftToRight ease;
+  margin: 1rem;
+
+  section {
+    display: flex;
+  }
+
+  h3 {
+    background: var(--gradient-brown-dark);
+    border: 1px solid var(--brown);
+    border-radius: 15px;
+    font-size: 28px;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  img {
+    cursor: pointer;
+    width: 70%;
+  }
+`;
+
+export const ModalContent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--gradient-brown-dark);
+  padding: 1rem;
+  font-family: var(--font);
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  border: 2px solid var(--darkblue);
+  animation: 1s vanish;
+
+  @keyframes vanish {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+`;
+
+export const ContainerRanking = styled.div`
+  max-width: 1140px;
+  margin: 0 auto;
 `;

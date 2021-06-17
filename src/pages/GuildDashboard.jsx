@@ -5,20 +5,19 @@ import Nav from "../components/Navigation/Nav";
 
 const Container = styled.div`
   background: var(--gradient-purple-dark);
-  min-height: 100vh;
-  width: 100vw;
-  padding: 25px 0;
+  min-height: 110vh;
+  padding: 40px 0;
 `;
 
 const GuildDashboard = () => {
   return (
-    <Container>
-      <Header>
+    <Header>
+      <Container>
         <Nav>
           <GuildRanking />
         </Nav>
-      </Header>
-    </Container>
+      </Container>
+    </Header>
   );
 };
 

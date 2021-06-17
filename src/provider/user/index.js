@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { useInfoQuests } from "../quests";
 import { useInfoGuild } from "../guild";
+import { toast } from "react-toastify";
 
 const UserContext = createContext({});
 
@@ -103,7 +104,7 @@ export const UserProvider = ({ children }) => {
       .then(() => {
         return history.push("/dashboard");
       })
-      .catch((err) => console.log(err, "Erro ao logar"));
+      .catch(() => toast.error("Invalid username/password."));
   };
 
   const createAccount = (data) => {
@@ -117,7 +118,7 @@ export const UserProvider = ({ children }) => {
       .then(() => {
         return history.push("/guildselect");
       })
-      .catch((err) => console.log("Falha na criação da conta"));
+      .catch(() => toast.error("Username already exists."));
   };
 
   const setAuthenticated = (data) => {

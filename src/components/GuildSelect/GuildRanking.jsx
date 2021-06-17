@@ -18,16 +18,13 @@ import Guild4Logo from "../../assets/guild4.png";
 
 const Container = styled.div`
   background-image: var(--gradient-blue-dark);
-  min-height: 80vh;
   width: 80vw;
-  margin: 79px auto;
+  margin: 79px 0;
   border-radius: 15px;
-  margin-left: 60px;
+  min-height: 250px;
+  margin-left: 16vw;
   @media (min-width: 750px) {
-    margin-left: 5.8rem;
-  }
-  @media (min-width: 1024px) {
-    margin-left: 8.1rem;
+    margin-left: 11.5vw;
   }
 `;
 
@@ -68,16 +65,18 @@ const GuildRanking = () => {
             <Content active={active === 0}>
               <GuildContainer>
                 <div>
-                  <h3 className="gm">Guild Master: </h3>
+                  <h3>Guild Master: </h3>
                   <label>
                     {mainGuilds["Scavenger Guild"]?.creator.username}
                   </label>
                   <h3>Members</h3>
-                  {mainGuilds["Scavenger Guild"]?.users_on_group?.map(
-                    (player) => (
-                      <GuildTitle>{player?.username}</GuildTitle>
-                    )
-                  )}
+                  <section>
+                    {mainGuilds["Scavenger Guild"]?.users_on_group?.map(
+                      (player) => (
+                        <GuildTitle>{player?.username}</GuildTitle>
+                      )
+                    )}
+                  </section>
                 </div>
               </GuildContainer>
               <SecondGuildContainer>
@@ -87,14 +86,16 @@ const GuildRanking = () => {
             <Content active={active === 1}>
               <GuildContainer>
                 <div>
-                  <h3 className="gm">Guild Master: </h3>
+                  <h3>Guild Master: </h3>
                   <label>{mainGuilds["Hunters Guild"]?.creator.username}</label>
                   <h3>Members</h3>
-                  {mainGuilds["Hunters Guild"]?.users_on_group?.map(
-                    (player) => (
-                      <GuildTitle>{player?.username}</GuildTitle>
-                    )
-                  )}
+                  <section>
+                    {mainGuilds["Hunters Guild"]?.users_on_group?.map(
+                      (player) => (
+                        <GuildTitle>{player?.username}</GuildTitle>
+                      )
+                    )}
+                  </section>
                 </div>
               </GuildContainer>
               <SecondGuildContainer>
@@ -104,12 +105,14 @@ const GuildRanking = () => {
             <Content active={active === 2}>
               <GuildContainer>
                 <div>
-                  <h3 className="gm">Guild Master: </h3>
+                  <h3>Guild Master: </h3>
                   <label>{mainGuilds["Fame Guild"]?.creator.username}</label>
                   <h3>Members</h3>
-                  {mainGuilds["Fame Guild"]?.users_on_group?.map((player) => (
-                    <GuildTitle>{player?.username}</GuildTitle>
-                  ))}
+                  <section>
+                    {mainGuilds["Fame Guild"]?.users_on_group?.map((player) => (
+                      <GuildTitle>{player?.username}</GuildTitle>
+                    ))}
+                  </section>
                 </div>
               </GuildContainer>
               <SecondGuildContainer>
@@ -119,12 +122,16 @@ const GuildRanking = () => {
             <Content active={active === 3}>
               <GuildContainer>
                 <div>
-                  <h3 className="gm">Guild Master: </h3>
+                  <h3>Guild Master: </h3>
                   <label>{mainGuilds["Ahjin Guild"]?.creator.username}</label>
                   <h3>Members</h3>
-                  {mainGuilds["Ahjin Guild"]?.users_on_group?.map((player) => (
-                    <GuildTitle>{player?.username}</GuildTitle>
-                  ))}
+                  <section>
+                    {mainGuilds["Ahjin Guild"]?.users_on_group?.map(
+                      (player) => (
+                        <GuildTitle>{player?.username}</GuildTitle>
+                      )
+                    )}
+                  </section>
                 </div>
               </GuildContainer>
               <SecondGuildContainer>
