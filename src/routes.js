@@ -10,6 +10,7 @@ import Nav from "./components/Navigation/Nav";
 import Section from "./components/Section";
 import PageNotFound from "./pages/PageNotFound";
 import Shop from "./components/Shop";
+import TutorialPage from "./pages/TutorialPage";
 
 const Routes = () => {
   return (
@@ -33,6 +34,9 @@ const Routes = () => {
         <Dashboard />
         {/* </Nav> */}
         {/* </Header> */}
+      </Route>
+      <Route exact path="/tutorial">
+        <TutorialPage/>
       </Route>
       <Route exact path="/shop" component={Shop} />
       <Route path={"*"} component={PageNotFound} />
