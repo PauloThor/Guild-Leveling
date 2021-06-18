@@ -56,5 +56,6 @@ export default createGlobalStyle`
     body {
         max-width: 100%;
         overflow-x: hidden;
+        position: relative;
     }
 `;

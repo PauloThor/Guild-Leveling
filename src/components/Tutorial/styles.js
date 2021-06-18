@@ -1,11 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledDiv = styled.div`
-	text-align: left;
-	color: var(--white);
-	font-family: var(--font);
+  text-align: left;
+  color: var(--white);
+  font-family: var(--font);
+  overflow-x: hidden;
 
-	h1{
-		margin: 0 25px 20px;
-	}
+  h1 {
+    margin: 0 25px 20px;
+  }
 `;
