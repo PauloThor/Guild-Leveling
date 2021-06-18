@@ -17,6 +17,8 @@ export const StyledUl = styled.ul`
     text-transform: uppercase;
     cursor: pointer;
     transition: 0.5s;
+    display: flex;
+    align-items: center;
 
     &:hover {
       color: var(--purple);
@@ -29,6 +31,7 @@ export const StyledUl = styled.ul`
 
   span {
     color: var(--purple);
+    margin-right: 5px;
   }
 
   flex-flow: column nowrap;
