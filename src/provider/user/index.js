@@ -141,8 +141,8 @@ export const UserProvider = ({ children }) => {
 
   const changeUsername = (data) => {
     api
-      .get(
-        "/habits/personal/",
+      .patch(
+        `/users/${infoUser.id}/`,
         { username: data },
         {
           headers: {
@@ -151,7 +151,7 @@ export const UserProvider = ({ children }) => {
         }
       )
       .then((response) => {
-        console.log(response);
+        setInfoUser({ ...infoUser, username: data });
       });
   };
 
