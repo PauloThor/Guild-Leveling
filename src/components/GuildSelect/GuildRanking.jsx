@@ -23,8 +23,23 @@ const Container = styled.div`
   border-radius: 15px;
   min-height: 250px;
   margin-left: 16vw;
+  padding: 10px;
   @media (min-width: 750px) {
     margin-left: 11.5vw;
+    max-width: 1200px;
+    margin: 80px auto;
+  }
+`;
+
+const GuildContent = styled.div`
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+  text-align: "center";
+  justify-content: "center";
+
+  @media (max-width: 375px) {
+    max-width: 123px;
   }
 `;
 
@@ -63,8 +78,8 @@ const GuildRanking = () => {
           </Tabs>
           <>
             <Content active={active === 0}>
-              <GuildContainer>
-                <div>
+              <GuildContainer style={{ justifyContent: "center" }}>
+                <GuildContent>
                   <h3>Guild Master: </h3>
                   <label>
                     {mainGuilds["Scavenger Guild"]?.creator.username}
@@ -77,15 +92,15 @@ const GuildRanking = () => {
                       )
                     )}
                   </section>
-                </div>
+                </GuildContent>
               </GuildContainer>
               <SecondGuildContainer>
                 <img src={Guild1Logo} alt="scavenger" />
               </SecondGuildContainer>
             </Content>
             <Content active={active === 1}>
-              <GuildContainer>
-                <div>
+              <GuildContainer style={{ justifyContent: "center" }}>
+                <GuildContent>
                   <h3>Guild Master: </h3>
                   <label>{mainGuilds["Hunters Guild"]?.creator.username}</label>
                   <h3>Members</h3>
@@ -96,15 +111,15 @@ const GuildRanking = () => {
                       )
                     )}
                   </section>
-                </div>
+                </GuildContent>
               </GuildContainer>
               <SecondGuildContainer>
                 <img src={Guild2Logo} alt="hunter" />
               </SecondGuildContainer>
             </Content>
             <Content active={active === 2}>
-              <GuildContainer>
-                <div>
+              <GuildContainer style={{ justifyContent: "center" }}>
+                <GuildContent>
                   <h3>Guild Master: </h3>
                   <label>{mainGuilds["Fame Guild"]?.creator.username}</label>
                   <h3>Members</h3>
@@ -113,15 +128,15 @@ const GuildRanking = () => {
                       <GuildTitle>{player?.username}</GuildTitle>
                     ))}
                   </section>
-                </div>
+                </GuildContent>
               </GuildContainer>
               <SecondGuildContainer>
                 <img src={Guild3Logo} alt="fame" />
               </SecondGuildContainer>
             </Content>
             <Content active={active === 3}>
-              <GuildContainer>
-                <div>
+              <GuildContainer style={{ justifyContent: "center" }}>
+                <GuildContent>
                   <h3>Guild Master: </h3>
                   <label>{mainGuilds["Ahjin Guild"]?.creator.username}</label>
                   <h3>Members</h3>
@@ -132,7 +147,7 @@ const GuildRanking = () => {
                       )
                     )}
                   </section>
-                </div>
+                </GuildContent>
               </GuildContainer>
               <SecondGuildContainer>
                 <img src={Guild4Logo} alt="ahjin" />

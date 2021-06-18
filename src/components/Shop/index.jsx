@@ -11,7 +11,7 @@ import { useInfoUser } from "../../provider/user";
 import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
-  min-width: 100vw;
+  max-width: 100vw;
   min-height: 100vh;
   background: var(--gradient-purple-dark);
   padding-top: 100px;
@@ -23,6 +23,11 @@ const Content = styled.div`
   align-items: center;
   padding-left: 20px;
   flex-wrap: wrap;
+
+  @media (max-width: 800px) {
+    max-width: 300px;
+    margin: 0 auto;
+  }
 `;
 
 const ExpansionCard = styled.div`
@@ -76,6 +81,11 @@ const ExpansionCard = styled.div`
   span {
     font-family: var(--font);
     font-size: 1.2rem;
+  }
+
+  @media (max-width: 800px) {
+    max-width: 300px;
+    margin: 0 auto;
   }
 `;
 
