@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "../Header";
 import Nav from "../Navigation/Nav";
 import { Button } from "@material-ui/core";
+import { toast } from "react-toastify";
 
 import Expansion1 from "../../assets/expansion1.png";
 import Expansion2 from "../../assets/expansion2.png";
@@ -200,6 +201,7 @@ const Shop = () => {
     const newDisabled = disabled;
     newDisabled[index] = true;
     setDisabled(newDisabled);
+    toast.success("Item added");
   };
 
   const handleRemove = (product) => {
@@ -209,7 +211,7 @@ const Shop = () => {
     const newDisabled = disabled;
     newDisabled[products.indexOf(product)] = false;
     setDisabled(newDisabled);
-    console.log(disabled);
+    toast.error("Item removed");
   };
 
   return (

@@ -58,4 +58,32 @@ export default createGlobalStyle`
         overflow-x: hidden;
         position: relative;
     }
+
+}
+.Toastify__toast-body {
+    font-family: var(--font);
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.Toastify__toast--dark {
+        background: #c99b12;
+        color: white;
+    border-radius: 10px;
+}
+
+.Toastify__progress-bar--dark {
+    background-color: var(--darkblue);
+}
+
+.Toastify__toast--error {
+    background: darkred;
+    border-radius: 10px;
+}
+
+.Toastify__toast--success {
+    background: darkgreen;
+    border-radius: 10px;
+}
 `;

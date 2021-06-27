@@ -8,6 +8,7 @@ import { useInfoUser } from "../../provider/user";
 import { useHistory } from "react-router-dom";
 import { useTasksGuild } from "../../provider/tasksguilds";
 import { useInfoGuild } from "../../provider/guild";
+import { toast } from "react-toastify";
 
 export const Container = styled.div`
   background-image: linear-gradient(to bottom left, #2c296d 0%, #21222d 25%);
@@ -187,6 +188,8 @@ const Settings = () => {
 
   const handleName = () => {
     changeUsername(name);
+    setName("");
+    toast.dark("Username changed!");
   };
 
   return (

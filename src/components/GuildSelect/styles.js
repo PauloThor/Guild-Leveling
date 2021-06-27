@@ -27,7 +27,7 @@ export const Container = styled.div`
   }
 
   h2 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     width: 100%;
     padding: 2rem;
   }
@@ -43,12 +43,14 @@ export const GuildButton = styled.button`
   padding: 10px;
   color: white;
   border-radius: 10px;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-family: var(--font);
-  width: 70%;
+  width: 50%;
+  border: 1px solid var(--brown);
 
   &:hover {
     background: var(--gradient-blue-dark);
+    border-color: var(--darkblue);
   }
 `;
 

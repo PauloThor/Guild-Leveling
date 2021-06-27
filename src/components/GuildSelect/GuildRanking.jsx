@@ -87,8 +87,8 @@ const GuildRanking = () => {
                   <h3>Members</h3>
                   <section>
                     {mainGuilds["Scavenger Guild"]?.users_on_group?.map(
-                      (player) => (
-                        <GuildTitle>{player?.username}</GuildTitle>
+                      (player, i) => (
+                        <GuildTitle key={i}>{player?.username}</GuildTitle>
                       )
                     )}
                   </section>

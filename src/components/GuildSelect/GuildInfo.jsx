@@ -108,7 +108,7 @@ const GuildInfo = () => {
         <Col>
           <h3>{name}</h3>
           <p>
-            Guild Master: <label>{creator?.username}</label>
+            Guild Master: <label>{creator?.username.replace(/_/g, " ")}</label>
           </p>
           <p>Members: {users_on_group?.length}</p>
         </Col>

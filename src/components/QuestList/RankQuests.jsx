@@ -2,6 +2,7 @@ import { useInfoQuests } from "../../provider/quests";
 import { useInfoUser } from "../../provider/user";
 import { useEffect, useState } from "react";
 import Quest from "../Quest";
+import { toast } from "react-toastify";
 
 import {
   BlueDisplayButton,
@@ -32,12 +33,21 @@ const RankQuests = () => {
 
   useEffect(() => {
     const currentLevel = infoUser.level;
+    const currentRank = infoUser.guildRank;
 
     updateStatus(infoQuests);
 
+    if (infoUser.guildRank !== currentRank) {
+      setShow(true);
+      toast.dark("NEW ROLE");
+      return;
+    }
+
     if (infoUser.level !== currentLevel) {
       setShow(true);
+      toast.dark("LEVEL UP");
     }
+
     // eslint-disable-next-line
   }, [infoUser, infoQuests]);
 
@@ -71,6 +81,7 @@ const RankQuests = () => {
           SHOW QUESTS
         </DisplayButton>
       </QuestsDisplay>
+      {/* <ToastContainer /> */}
     </QuestsContainer>
   );
 };

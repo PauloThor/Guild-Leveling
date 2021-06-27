@@ -51,6 +51,16 @@ export const Container = styled.div`
         color: tomato;
         padding: 0;
       }
+
+      span.lvl {
+        color: ${(props) => (props.isLeveling ? "red" : "tomato")};
+      }
+
+      span.rank {
+        color: ${(props) => (props.isBeingPromoted ? "red" : "tomato")};
+      }
+
+      }
     }
 
     .MuiSvgIcon-root {

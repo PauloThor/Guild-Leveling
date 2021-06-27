@@ -26,6 +26,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     animation: ${appearFromCenter} 1.5s;
+    width: 50%;
   }
 
   img {

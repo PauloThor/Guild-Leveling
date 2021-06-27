@@ -106,8 +106,6 @@ export const QuestsProvider = ({ children }) => {
   const getRandom = (max) => Math.floor(Math.random() * max);
 
   const getCurrentQuests = () => {
-    console.log("rank:", infoUser);
-
     const playerQuestsRanks = questsByLevel[infoUser.guildRank];
 
     const getNewQuests = () =>

@@ -2,15 +2,44 @@ import { Container } from "./styles";
 import QuestsCard from "./QuestsCard";
 import PersonIcon from "@material-ui/icons/Person";
 import ExperienceBar from "../ExperienceBar";
+import { useEffect, useState } from "react";
+import { useInfoUser } from "../../provider/user";
+import { useInfoQuests } from "../../provider/quests";
 
 const ResumeUser = ({ user }) => {
+  const [loading, setLoading] = useState(false);
+  const [loadingRank, setLoadingRank] = useState(false);
+  const { infoUser } = useInfoUser();
+
+  useEffect(() => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    // eslint-disable-next-line
+  }, [infoUser.level]);
+
+  useEffect(() => {
+    setLoadingRank(true);
+
+    setTimeout(() => {
+      setLoadingRank(false);
+    }, 2000);
+
+    // eslint-disable-next-line
+  }, [infoUser.guildRank]);
+
   return (
-    <Container>
+    <Container isLeveling={loading} isBeingPromoted={loadingRank}>
       <div className="user-profile">
         <PersonIcon />
         <div className="info">
           <span>
-            Name: <span className="name">{user.username}</span> Level:
+            Name:{" "}
+            <span className="name">{user.username.replace(/_/g, " ")}</span>{" "}
+            Level:
             <span className="lvl"> {user.level}</span>
           </span>
           <span>
