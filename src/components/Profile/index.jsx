@@ -4,7 +4,6 @@ import PersonIcon from "@material-ui/icons/Person";
 import ExperienceBar from "../ExperienceBar";
 import { useEffect, useState } from "react";
 import { useInfoUser } from "../../provider/user";
-import { useInfoQuests } from "../../provider/quests";
 
 const ResumeUser = ({ user }) => {
   const [loading, setLoading] = useState(false);

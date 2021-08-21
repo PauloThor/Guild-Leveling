@@ -133,13 +133,13 @@ const Settings = () => {
   const [goal, setGoal] = useState("");
   const [quest, setQuest] = useState("");
   const [guildName, setGuildName] = useState("");
-  const [guildText, setGuildText] = useState("");
+  // const [guildText] = useState("");
   const [name, setName] = useState("");
 
   const { infoQuests, getQuests } = useInfoQuests();
   const { createQuest, createActivity } = useTasksGuild();
   const { infoUser, changeUsername } = useInfoUser();
-  const { getUserGuilds, infoGuild, createGuild } = useInfoGuild();
+  const { getUserGuilds, infoGuild } = useInfoGuild();
 
   const history = useHistory();
 
@@ -176,15 +176,15 @@ const Settings = () => {
     setQuest("");
   };
 
-  const handleNewGuld = () => {
-    const data = {
-      name: guildName,
-      description: guildText,
-      category: "leveling",
-    };
+  // const handleNewGuld = () => {
+  //   const data = {
+  //     name: guildName,
+  //     description: guildText,
+  //     category: "leveling",
+  //   };
 
-    createGuild(data);
-  };
+  //   createGuild(data);
+  // };
 
   const handleName = () => {
     changeUsername(name);

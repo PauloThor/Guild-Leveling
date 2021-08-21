@@ -6,7 +6,7 @@ const Card = ({ img_url, title, description })=>{
 	return(
 		<StyledDiv>
 			<ImgDiv>
-				<img src = { img_url } />
+				<img src = { img_url } alt={title} />
 			</ImgDiv>
 			<TextDiv>
 				<h3>{ title }</h3>
