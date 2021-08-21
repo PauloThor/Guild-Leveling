@@ -23,7 +23,7 @@ Desktop
 
 Mobile
 
-<div style='display: flex'>
+<div style='display: flex; justify-content: center'>
 <img src='https://i.ibb.co/SczrcSN/Captura-de-tela-de-2021-08-21-20-20-52.png'>
 
 <img src='https://i.ibb.co/cvykVgh/Captura-de-tela-de-2021-08-21-20-21-53.png'>
