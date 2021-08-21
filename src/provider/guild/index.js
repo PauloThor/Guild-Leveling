@@ -3,6 +3,33 @@ import api from "../../services";
 import { useInfoUser } from "../../provider/user";
 const GuildContext = createContext([]);
 
+const mockGuilds = [
+  {
+    name: "Scavenger Guild",
+    id: 1,
+    description: "One of the 4 elite guilds.",
+    users_on_group: ["Red", "Warrior1"],
+  },
+  {
+    name: "Hunters Guild",
+    id: 2,
+    description: "One of the 4 elite guilds.",
+    users_on_group: ["Red", "Warrior1"],
+  },
+  {
+    name: "Fame Guild",
+    id: 3,
+    description: "One of the 4 elite guilds.",
+    users_on_group: ["Red", "Warrior1"],
+  },
+  {
+    name: "Ahjin Guild",
+    id: 4,
+    description: "One of the 4 elite guilds.",
+    users_on_group: ["Red", "Warrior1"],
+  },
+];
+
 export const GuildProvider = ({ children }) => {
   const [infoGuilds, setInfoGuilds] = useState([]);
   const [infoGuild, setInfoGuild] = useState({});
@@ -18,9 +45,10 @@ export const GuildProvider = ({ children }) => {
   } = useInfoUser();
 
   const searchGuilds = (itemToSearch) => {
-    api
-      .get(`/groups/?category=${itemToSearch}`)
-      .then((response) => setInfoGuilds(response.data.results));
+    // api
+    //   .get(`/groups/?category=${itemToSearch}`)
+    //   .then((response) => setInfoGuilds(response.data.results));
+    setInfoGuilds(mockGuilds);
   };
 
   //Inserir o user na guild passando
