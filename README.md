@@ -19,7 +19,7 @@ Desktop
 
 <img src='https://i.ibb.co/t82nf8C/Captura-de-tela-de-2021-08-21-17-27-11.png'>
 
-<img src='https://i.ibb.co/9HwHY5H/Captura-de-tela-de-2021-08-21-19-57-53.png'>
+<img src='https://i.ibb.co/h1P8nWK/Captura-de-tela-de-2021-08-21-20-34-53.png'>
 
 Mobile
 
