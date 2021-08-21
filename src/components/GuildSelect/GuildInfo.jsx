@@ -113,7 +113,7 @@ const GuildInfo = () => {
           <p>Members: {users_on_group?.length}</p>
         </Col>
         <Col>
-          <img src={SelectedLogo[name]} alt={name} />
+          <img src={SelectedLogo[name] || Guild1Logo} alt={name} />
         </Col>
       </GuildDetailsContainer>
     </>
