@@ -19,7 +19,7 @@ Desktop
 
 <img src='https://i.im.ge/2021/08/22/WFOE6.png'>
 
-<img src='https://i.im.ge/2021/08/22/WFFDz.png'>
+<img src='https://i.im.ge/2021/08/22/WF1JF.png'>
 
 Mobile
 
