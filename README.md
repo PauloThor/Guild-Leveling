@@ -17,9 +17,9 @@ Guild Leveling is a quest-driven game based on a todo list. Every player can com
 
 Desktop
 
-<img src='https://i.ibb.co/t82nf8C/Captura-de-tela-de-2021-08-21-17-27-11.png'>
+<img src='https://i.im.ge/2021/08/22/WFOE6.png'>
 
-<img src='https://i.ibb.co/h1P8nWK/Captura-de-tela-de-2021-08-21-20-34-53.png'>
+<img src='https://i.im.ge/2021/08/22/WFFDz.png'>
 
 Mobile
 
